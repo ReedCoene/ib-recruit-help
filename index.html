@@ -46,11 +46,11 @@
             </div>
         </div>
 
-        <!-- Landing Screen -->
-        <div id="landing-screen" class="screen">
+        <!-- Module Select Screen -->
+        <div id="module-screen" class="screen">
             <div class="landing-container">
                 <div class="user-bar">
-                    <span class="user-greeting" id="user-greeting">Welcome back</span>
+                    <span class="user-greeting" id="module-greeting">Welcome back</span>
                     <button class="logout-btn" onclick="logout()">Sign Out</button>
                 </div>
                 <div class="logo-area">
@@ -63,6 +63,45 @@
                         </svg>
                     </div>
                     <h1 class="main-title">IB Recruiting</h1>
+                    <p class="subtitle">Choose a module to study</p>
+                </div>
+                <div class="module-grid" id="module-grid">
+                    <button class="module-card active-module" onclick="selectModule('accounting')">
+                        <div class="module-icon">&#x1F4CA;</div>
+                        <h3>Accounting & 3 Statements</h3>
+                        <p>BIWS Accounting Guide — 14 Key Rules, 72 interview questions</p>
+                        <div class="module-status">Available</div>
+                    </button>
+                    <div class="module-card locked-module">
+                        <div class="module-icon">&#x1F512;</div>
+                        <h3>Coming Soon</h3>
+                        <p>More BIWS guides will be added here</p>
+                        <div class="module-status locked">Locked</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Landing Screen -->
+        <div id="landing-screen" class="screen">
+            <div class="landing-container">
+                <div class="user-bar">
+                    <span class="user-greeting" id="user-greeting">Welcome back</span>
+                    <div class="user-bar-right">
+                        <button class="back-btn module-back-btn" onclick="showScreen('module-screen')">&#8592; Modules</button>
+                        <button class="logout-btn" onclick="logout()">Sign Out</button>
+                    </div>
+                </div>
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 80 80" fill="none">
+                            <rect x="5" y="20" width="22" height="50" rx="3" fill="#6366f1" opacity="0.9"/>
+                            <rect x="29" y="10" width="22" height="60" rx="3" fill="#818cf8" opacity="0.9"/>
+                            <rect x="53" y="30" width="22" height="40" rx="3" fill="#a5b4fc" opacity="0.9"/>
+                            <circle cx="16" cy="15" r="6" fill="#f59e0b"/>
+                        </svg>
+                    </div>
+                    <h1 class="main-title" id="module-title">Accounting & 3 Statements</h1>
                     <p class="subtitle">Master the guides. Land the offer.</p>
                 </div>
 
@@ -353,7 +392,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- Learn: Topic Select -->
         <div id="learn-topics-screen" class="screen">
@@ -391,6 +429,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
     <script src="auth.js"></script>
     <script src="lessons.js"></script>

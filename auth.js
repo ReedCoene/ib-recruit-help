@@ -62,15 +62,25 @@ function attemptLogin() {
 }
 
 function enterApp(name) {
-    document.getElementById('user-greeting').textContent = `Welcome, ${name.split(' ')[0]}`;
+    const firstName = name.split(' ')[0];
+    document.getElementById('module-greeting').textContent = `Welcome, ${firstName}`;
+    document.getElementById('user-greeting').textContent = `Welcome, ${firstName}`;
     document.getElementById('login-screen').classList.remove('active');
+    document.getElementById('module-screen').classList.add('active');
+}
+
+function selectModule(moduleId) {
+    // For now only 'accounting' is available
+    document.getElementById('module-screen').classList.remove('active');
     document.getElementById('landing-screen').classList.add('active');
-    renderProgressDashboard(name);
+    const session = getSession();
+    if (session) renderProgressDashboard(session.name);
 }
 
 function logout() {
     localStorage.removeItem('acct_game_session');
-    document.getElementById('landing-screen').classList.remove('active');
+    // Hide all screens, show login
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('login-screen').classList.add('active');
     document.getElementById('login-password').value = '';
     document.getElementById('login-first').value = '';

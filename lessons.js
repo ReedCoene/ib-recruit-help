@@ -368,5 +368,77 @@ const LESSONS = [
                 example: "IFRS company: Lease cash rent = $20. CFO shows +$14.7 Lease Depreciation add-back. CFF shows -$11.2 Principal Repayment. For true FCF: remove the $14.7 add-back from CFO. This gives you the same cash picture as GAAP's simpler treatment."
             }
         ]
+    },
+    {
+        id: "financial-investments",
+        title: "Financial Investments",
+        icon: "&#x1F4B0;",
+        color: "#22d3ee",
+        cards: [
+            {
+                term: "Why Companies Buy Financial Investments",
+                what: "Companies buy stocks and bonds (financial investments) when they have excess Cash and can't find better uses — can't hire, buy equipment, acquire companies, or justify dividends/buybacks.",
+                why: "Idle cash earns nothing. Financial investments at least generate Interest Income. The initial purchase shows up only on the CFS (Cash Flow from Investing) and reduces the company's cash balance.",
+                example: "Apple holds $150B+ in cash and marketable securities. It earns interest income on these while deciding how to deploy capital through buybacks, dividends, or acquisitions."
+            },
+            {
+                term: "Financial Investments on the Statements",
+                what: "Purchase: CFS (CFI) negative, BS Financial Investments up. Ongoing: Interest Income on IS boosts Pre-Tax Income, Net Income, and Cash. The investment sits as an Asset on the BS.",
+                why: "The purchase is a capital allocation decision (not an expense), so it doesn't hit the IS initially. Only the income earned appears on the IS going forward.",
+                example: "Company buys $100 in bonds yielding 5%. Year 1: IS shows $5 Interest Income, PTI +$5, NI +$3.75. CFS: NI +$3.75, Cash up $3.75. BS: Financial Investments +$100, Cash changes reflect the income earned."
+            }
+        ]
+    },
+    {
+        id: "linking-projecting",
+        title: "Linking & Projecting Statements",
+        icon: "&#x1F517;",
+        color: "#f472b6",
+        cards: [
+            {
+                term: "How the Three Statements Link",
+                what: "Net Income from the IS becomes the top line of the CFS. Adjust for non-cash items and working capital changes to get CFO. Add CFI and CFF for net cash change. Cash flows to the BS. Net Income, SBC, Dividends, and buybacks flow into CSE.",
+                why: "The links ensure consistency — every dollar is accounted for across all three statements. Without links, the BS would go out of balance and cash wouldn't reconcile.",
+                example: "Net Income of $75 flows to CFS top. Add back $20 D&A, subtract $10 AR increase = CFO of $85. CFI of -$50 (CapEx), CFF of -$20 (Dividends). Net cash change = +$15. Cash on BS increases by $15. CSE increases by $75 (NI) minus $20 (Dividends) = +$55."
+            },
+            {
+                term: "CFS to BS Links (Assets Side)",
+                what: "When linking CFS items to the Assets side of the BS, SUBTRACT the CFS amount. CapEx and D&A link to Net PP&E. Cash changes link to Cash. Working capital items link to their respective BS lines.",
+                why: "You subtract because CFS items represent changes, and on the Assets side, a positive CFS outflow (like CapEx) increases the Asset. The subtraction convention ensures the math works: Beginning PP&E - D&A + CapEx = Ending PP&E.",
+                example: "Beginning PP&E = $500. CapEx = $100 (shown as -$100 on CFS). D&A = $40 (shown as +$40 on CFS). Ending PP&E = $500 + $100 - $40 = $560."
+            },
+            {
+                term: "Simplifying Before Projecting",
+                what: "Before projecting, simplify: IS to 5-10 key lines with D&A shown separately. BS to 5-10 items per side, combining Short/Long-Term versions. CFS: consolidate non-cash adjustments to D&A + Deferred Taxes + 1-2 others.",
+                why: "Real financial statements have dozens of line items, many immaterial. Simplifying lets you focus on the drivers that actually matter for the projection and avoids false precision on tiny items.",
+                example: "A real BS might have 25 line items. Simplify to: Cash, AR, Inventory, Net PP&E, Goodwill on Assets. AP, Deferred Revenue, Debt, CSE on L&E. Combine all misc items into 'Other Assets' and 'Other Liabilities.'"
+            }
+        ]
+    },
+    {
+        id: "interview-framework",
+        title: "Interview Question Framework",
+        icon: "&#x1F3AF;",
+        color: "#a78bfa",
+        cards: [
+            {
+                term: "Walk-the-Statements Order",
+                what: "Always answer in this order: (1) Income Statement changes, (2) Cash Flow Statement changes, (3) Balance Sheet changes, (4) Verify BS balances. State your tax rate assumption upfront (usually 25%).",
+                why: "This order follows the natural flow of information: IS determines Net Income, which feeds the CFS. The CFS determines Cash and other adjustments that link to the BS. Ending with the balance check proves your answer is correct.",
+                example: "Interviewer: 'Depreciation increases by $20.' You: 'Assuming a 25% tax rate... IS: PTI down $20, NI down $15. CFS: NI down $15, add back $20 D&A, Cash up $5. BS: Cash up $5, PP&E down $20, Assets down $15. CSE down $15 on L&E. Both sides down $15, balanced.'"
+            },
+            {
+                term: "Five Categories of Changes",
+                what: "Most interview questions fall into 5 categories: (1) Cash IS items — straightforward NI/Cash/CSE changes. (2) Operational BS items — trickier, different behavior for increases vs decreases. (3) Non-cash IS items — NI/Cash/CSE change plus a BS item; may have Book vs Cash Tax effects. (4) Lease changes. (5) Non-operational BS/CFS items — no IS impact, just CFS and BS.",
+                why: "Categorizing the question immediately tells you which statements are affected and whether there are tax complications. Category 3 (non-cash IS items) is where most people make mistakes because of Deferred Tax adjustments.",
+                example: "SBC = Category 3 (non-cash IS item, not cash-tax deductible). Debt issuance = Category 5 (non-operational, no IS impact). Revenue on credit = Category 2 (operational BS item, AR increases)."
+            },
+            {
+                term: "Intuition Check",
+                what: "After walking through the mechanics, add a one-sentence 'intuition' summary explaining WHY the numbers make sense in plain English. This shows you understand the economics, not just the accounting.",
+                why: "Interviewers want to see that you understand what's actually happening to the business, not just that you've memorized the steps. The intuition check differentiates candidates who truly understand from those who just drilled formulas.",
+                example: "After walking through Depreciation +$20: 'Intuitively, this non-cash expense doesn't cost the company anything, but it reduces the company's taxes by $5, so Cash increases by $5.' This shows you grasp WHY Cash goes up despite an expense increasing."
+            }
+        ]
     }
 ];

@@ -1245,4 +1245,99 @@ body {
     .statements-grid { grid-template-columns: 1fr; }
     .game-header { flex-wrap: wrap; }
     .results-stats { gap: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+}
+
+/* === MODULE SELECT === */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.module-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.module-card.active-module:hover {
+    border-color: var(--primary);
+    background: var(--bg-card-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow), 0 0 30px var(--primary-glow);
+}
+
+.module-card.locked-module {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.module-icon {
+    font-size: 2.5rem;
+    margin-bottom: 4px;
+}
+
+.module-card h3 {
+    color: var(--text);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.module-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.module-status {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--success-bg);
+    color: var(--success);
+    margin-top: 6px;
+}
+
+.module-status.locked {
+    background: rgba(136, 136, 170, 0.15);
+    color: var(--text-muted);
+}
+
+.user-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.module-back-btn {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.module-back-btn:hover {
+    border-color: var(--primary);
+    color: var(--text);
 }
