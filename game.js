@@ -669,10 +669,13 @@ function openLearn() {
         const card = document.createElement('button');
         card.className = 'mode-card';
         card.style.borderLeft = `4px solid ${lesson.color}`;
+        const audioHtml = lesson.audio
+            ? `<span class="topic-audio-badge" title="Audio overview available">&#x1F3A7; Audio</span>`
+            : '';
         card.innerHTML = `
             <div class="mode-icon">${lesson.icon}</div>
             <h4>${lesson.title}</h4>
-            <p>${lesson.cards.length} concepts</p>
+            <p>${lesson.cards.length} concepts ${audioHtml}</p>
         `;
         card.onclick = () => openLesson(i);
         grid.appendChild(card);
@@ -686,9 +689,48 @@ function openLesson(topicIndex) {
     const lesson = LESSONS[topicIndex];
 
     document.getElementById('lesson-topic-title').textContent = lesson.title;
+
+    // Audio player
+    const existingPlayer = document.getElementById('lesson-audio-container');
+    if (existingPlayer) existingPlayer.remove();
+
+    if (lesson.audio) {
+        const audioContainer = document.createElement('div');
+        audioContainer.id = 'lesson-audio-container';
+        audioContainer.className = 'lesson-audio-container';
+        audioContainer.innerHTML = `
+            <div class="lesson-audio-header">
+                <span class="audio-icon">&#x1F3A7;</span>
+                <span>Audio Overview</span>
+                <button class="audio-toggle-btn" onclick="toggleLessonAudio()">Listen</button>
+            </div>
+            <div class="lesson-audio-player" id="lesson-audio-player" style="display:none;">
+                <audio id="lesson-audio" controls preload="none">
+                    <source src="${AUDIO_BASE_URL}${lesson.audio}" type="audio/mpeg">
+                </audio>
+            </div>
+        `;
+        const lessonHeader = document.querySelector('.lesson-header');
+        lessonHeader.after(audioContainer);
+    }
+
     renderLessonCard();
     updateLessonNav();
     showScreen('lesson-screen');
+}
+
+function toggleLessonAudio() {
+    const player = document.getElementById('lesson-audio-player');
+    const btn = document.querySelector('.audio-toggle-btn');
+    if (player.style.display === 'none') {
+        player.style.display = 'block';
+        btn.textContent = 'Hide';
+    } else {
+        player.style.display = 'none';
+        btn.textContent = 'Listen';
+        const audio = document.getElementById('lesson-audio');
+        if (audio) audio.pause();
+    }
 }
 
 function renderLessonCard() {

@@ -1,9 +1,13 @@
+// Audio files hosted on GitHub Releases
+const AUDIO_BASE_URL = "https://github.com/ReedCoene/ib-recruit-help/releases/download/audio-v1/";
+
 const LESSONS = [
     {
         id: "is-basics",
         title: "The Income Statement",
         icon: "&#x1F4C8;",
         color: "#60a5fa",
+        audio: "key_rule_1__income_statement_and_working_capital.mp3",
         cards: [
             {
                 term: "Revenue (Net Sales)",
@@ -46,6 +50,7 @@ const LESSONS = [
     {
         id: "working-capital",
         title: "Working Capital Items",
+        audio: "key_rule_1__income_statement_and_working_capital.mp3",
         icon: "&#x1F504;",
         color: "#34d399",
         cards: [
@@ -90,6 +95,7 @@ const LESSONS = [
     {
         id: "capex-depreciation",
         title: "CapEx, Depreciation & PP&E",
+        audio: "key_rule_2__capex_depreciation_and_business_funding.mp3",
         icon: "&#x1F3ED;",
         color: "#fbbf24",
         cards: [
@@ -122,6 +128,7 @@ const LESSONS = [
     {
         id: "debt-equity",
         title: "Debt, Equity & Preferred Stock",
+        audio: "key_rule_2__capex_depreciation_and_business_funding.mp3",
         icon: "&#x1F4B0;",
         color: "#fb923c",
         cards: [
@@ -154,6 +161,7 @@ const LESSONS = [
     {
         id: "balance-sheet",
         title: "The Balance Sheet",
+        audio: "key_rule_10__summary_of_three_financial_statements.mp3",
         icon: "&#x2696;",
         color: "#a78bfa",
         cards: [
@@ -186,6 +194,7 @@ const LESSONS = [
     {
         id: "cash-flow-statement",
         title: "The Cash Flow Statement",
+        audio: "key_rule_10__summary_of_three_financial_statements.mp3",
         icon: "&#x1F4B5;",
         color: "#22d3ee",
         cards: [
@@ -218,6 +227,7 @@ const LESSONS = [
     {
         id: "noncash-items",
         title: "Non-Cash Items & Deferred Taxes",
+        audio: "key_rule_5__deferred_taxes_and_nols.mp3",
         icon: "&#x1F4AD;",
         color: "#f472b6",
         cards: [
@@ -256,6 +266,7 @@ const LESSONS = [
     {
         id: "leases",
         title: "Operating & Finance Leases",
+        audio: "key_rule_3__operating_and_finance_leases.mp3",
         icon: "&#x1F3E2;",
         color: "#f97316",
         cards: [
@@ -288,6 +299,7 @@ const LESSONS = [
     {
         id: "ma-goodwill",
         title: "M&A, Goodwill & Intangibles",
+        audio: "key_rule_8__goodwill_and_intangibles_from_m.a.mp3",
         icon: "&#x1F91D;",
         color: "#8b5cf6",
         cards: [
@@ -314,6 +326,7 @@ const LESSONS = [
     {
         id: "fcf-metrics",
         title: "Free Cash Flow & Key Metrics",
+        audio: "key_rule_12__free_cash_flow_and_working_capital.mp3",
         icon: "&#x1F4CA;",
         color: "#14b8a6",
         cards: [
@@ -352,6 +365,7 @@ const LESSONS = [
     {
         id: "gaap-ifrs",
         title: "U.S. GAAP vs. IFRS",
+        audio: "key_rule_9__us_gaap_vs_ifrs.mp3",
         icon: "&#x1F30D;",
         color: "#e879f9",
         cards: [
@@ -372,6 +386,7 @@ const LESSONS = [
     {
         id: "financial-investments",
         title: "Financial Investments",
+        audio: "key_rule_4__financial_investments.mp3",
         icon: "&#x1F4B0;",
         color: "#22d3ee",
         cards: [
@@ -392,6 +407,7 @@ const LESSONS = [
     {
         id: "linking-projecting",
         title: "Linking & Projecting Statements",
+        audio: "key_rule_11__linking_and_projecting_statements.mp3",
         icon: "&#x1F517;",
         color: "#f472b6",
         cards: [
@@ -418,6 +434,7 @@ const LESSONS = [
     {
         id: "interview-framework",
         title: "Interview Question Framework",
+        audio: "key_rule_14__how_to_answer_interview_questions.mp3",
         icon: "&#x1F3AF;",
         color: "#a78bfa",
         cards: [
