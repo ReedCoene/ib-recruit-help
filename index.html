@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Statements Mastery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Landing Screen -->
+        <div id="landing-screen" class="screen active">
+            <div class="landing-container">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 80 80" fill="none">
+                            <rect x="5" y="20" width="22" height="50" rx="3" fill="#6366f1" opacity="0.9"/>
+                            <rect x="29" y="10" width="22" height="60" rx="3" fill="#818cf8" opacity="0.9"/>
+                            <rect x="53" y="30" width="22" height="40" rx="3" fill="#a5b4fc" opacity="0.9"/>
+                            <circle cx="16" cy="15" r="6" fill="#f59e0b"/>
+                        </svg>
+                    </div>
+                    <h1 class="main-title">3 Statements Mastery</h1>
+                    <p class="subtitle">Master the Income Statement, Balance Sheet & Cash Flow Statement</p>
+                </div>
+
+                <div class="bloom-levels-preview">
+                    <h3>Bloom's Taxonomy Learning Path</h3>
+                    <div class="bloom-path">
+                        <div class="bloom-step" data-level="1">
+                            <div class="bloom-icon">1</div>
+                            <span>Remember</span>
+                            <small>Definitions & recall</small>
+                        </div>
+                        <div class="bloom-connector"></div>
+                        <div class="bloom-step" data-level="2">
+                            <div class="bloom-icon">2</div>
+                            <span>Understand</span>
+                            <small>Explain concepts</small>
+                        </div>
+                        <div class="bloom-connector"></div>
+                        <div class="bloom-step" data-level="3">
+                            <div class="bloom-icon">3</div>
+                            <span>Apply</span>
+                            <small>Walk the statements</small>
+                        </div>
+                        <div class="bloom-connector"></div>
+                        <div class="bloom-step" data-level="4">
+                            <div class="bloom-icon">4</div>
+                            <span>Analyze</span>
+                            <small>Ratios & metrics</small>
+                        </div>
+                        <div class="bloom-connector"></div>
+                        <div class="bloom-step" data-level="5">
+                            <div class="bloom-icon">5</div>
+                            <span>Evaluate</span>
+                            <small>Judge scenarios</small>
+                        </div>
+                        <div class="bloom-connector"></div>
+                        <div class="bloom-step" data-level="6">
+                            <div class="bloom-icon">6</div>
+                            <span>Create</span>
+                            <small>Multi-step problems</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mode-select">
+                    <h3>Choose Your Mode</h3>
+                    <div class="mode-cards">
+                        <button class="mode-card learn-card" onclick="openLearn()">
+                            <div class="mode-icon">&#x1F4D6;</div>
+                            <h4>Learn</h4>
+                            <p>Study each concept with explanations, reasoning & examples before you practice</p>
+                        </button>
+                        <button class="mode-card" onclick="startGame('guided')">
+                            <div class="mode-icon">&#x1F3AF;</div>
+                            <h4>Guided Path</h4>
+                            <p>Progress through all 6 Bloom's levels in order</p>
+                        </button>
+                        <button class="mode-card" onclick="startGame('practice')">
+                            <div class="mode-icon">&#x1F504;</div>
+                            <h4>Practice Mode</h4>
+                            <p>Pick a specific level to drill</p>
+                        </button>
+                        <button class="mode-card" onclick="startGame('challenge')">
+                            <div class="mode-icon">&#x26A1;</div>
+                            <h4>Interview Prep</h4>
+                            <p>Timed challenge mixing all levels</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level Select (Practice Mode) -->
+        <div id="level-select-screen" class="screen">
+            <div class="screen-container">
+                <button class="back-btn" onclick="showScreen('landing-screen')">&#8592; Back</button>
+                <h2>Select a Level to Practice</h2>
+                <div class="level-grid">
+                    <button class="level-card" onclick="startLevel(1)" data-level="1">
+                        <div class="level-num">Level 1</div>
+                        <h3>Remember</h3>
+                        <p>Flashcards & definitions of key accounting terms</p>
+                        <div class="level-progress"><div class="level-progress-fill" id="prog-1"></div></div>
+                    </button>
+                    <button class="level-card" onclick="startLevel(2)" data-level="2">
+                        <div class="level-num">Level 2</div>
+                        <h3>Understand</h3>
+                        <p>Explain why items appear on specific statements</p>
+                        <div class="level-progress"><div class="level-progress-fill" id="prog-2"></div></div>
+                    </button>
+                    <button class="level-card" onclick="startLevel(3)" data-level="3">
+                        <div class="level-num">Level 3</div>
+                        <h3>Apply</h3>
+                        <p>Walk through statement changes step by step</p>
+                        <div class="level-progress"><div class="level-progress-fill" id="prog-3"></div></div>
+                    </button>
+                    <button class="level-card" onclick="startLevel(4)" data-level="4">
+                        <div class="level-num">Level 4</div>
+                        <h3>Analyze</h3>
+                        <p>Calculate ratios, interpret metrics</p>
+                        <div class="level-progress"><div class="level-progress-fill" id="prog-4"></div></div>
+                    </button>
+                    <button class="level-card" onclick="startLevel(5)" data-level="5">
+                        <div class="level-num">Level 5</div>
+                        <h3>Evaluate</h3>
+                        <p>Judge financial health, spot red flags</p>
+                        <div class="level-progress"><div class="level-progress-fill" id="prog-5"></div></div>
+                    </button>
+                    <button class="level-card" onclick="startLevel(6)" data-level="6">
+                        <div class="level-num">Level 6</div>
+                        <h3>Create</h3>
+                        <p>Solve multi-step interview scenarios</p>
+                        <div class="level-progress"><div class="level-progress-fill" id="prog-6"></div></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="game-container">
+                <div class="game-header">
+                    <button class="back-btn" onclick="exitGame()">&#8592; Exit</button>
+                    <div class="game-info">
+                        <div class="bloom-badge" id="current-bloom-badge">Level 1: Remember</div>
+                        <div class="question-counter" id="question-counter">1 / 10</div>
+                    </div>
+                    <div class="game-stats">
+                        <div class="stat">
+                            <span class="stat-label">Score</span>
+                            <span class="stat-value" id="score-display">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Streak</span>
+                            <span class="stat-value" id="streak-display">0</span>
+                        </div>
+                        <div class="stat timer-stat" id="timer-container" style="display:none;">
+                            <span class="stat-label">Time</span>
+                            <span class="stat-value" id="timer-display">60</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="game-progress"></div>
+                </div>
+
+                <!-- Flashcard Mode (Level 1) -->
+                <div id="flashcard-area" class="question-area" style="display:none;">
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="flashcard-inner" id="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="card-label">TERM</div>
+                                <h2 id="flash-term"></h2>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="card-label">DEFINITION</div>
+                                <p id="flash-definition"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="flash-hint">Click to flip</p>
+                    <div class="flash-actions">
+                        <button class="flash-btn wrong" onclick="rateFlashcard(false)">Still Learning</button>
+                        <button class="flash-btn correct" onclick="rateFlashcard(true)">Got It!</button>
+                    </div>
+                </div>
+
+                <!-- Multiple Choice Mode -->
+                <div id="mc-area" class="question-area" style="display:none;">
+                    <div class="question-card">
+                        <div class="question-context" id="mc-context"></div>
+                        <h2 class="question-text" id="mc-question"></h2>
+                    </div>
+                    <div class="options-grid" id="mc-options"></div>
+                    <div class="explanation-box" id="mc-explanation" style="display:none;">
+                        <div class="explanation-header" id="explanation-header"></div>
+                        <p id="explanation-text"></p>
+                        <button class="next-btn" onclick="nextQuestion()">Next Question &#8594;</button>
+                    </div>
+                </div>
+
+                <!-- Ordering / Drag Mode -->
+                <div id="order-area" class="question-area" style="display:none;">
+                    <div class="question-card">
+                        <h2 class="question-text" id="order-question"></h2>
+                    </div>
+                    <div class="order-list" id="order-list"></div>
+                    <button class="submit-btn" id="order-submit" onclick="checkOrder()">Check Answer</button>
+                    <div class="explanation-box" id="order-explanation" style="display:none;">
+                        <div class="explanation-header" id="order-explanation-header"></div>
+                        <p id="order-explanation-text"></p>
+                        <button class="next-btn" onclick="nextQuestion()">Next Question &#8594;</button>
+                    </div>
+                </div>
+
+                <!-- Statement Builder Mode (Level 3+) -->
+                <div id="builder-area" class="question-area" style="display:none;">
+                    <div class="question-card">
+                        <div class="scenario-badge">Scenario</div>
+                        <h2 class="question-text" id="builder-scenario"></h2>
+                    </div>
+                    <div class="statements-grid">
+                        <div class="statement-panel" data-statement="is">
+                            <h3>Income Statement</h3>
+                            <div class="statement-items" id="is-items"></div>
+                        </div>
+                        <div class="statement-panel" data-statement="cfs">
+                            <h3>Cash Flow Statement</h3>
+                            <div class="statement-items" id="cfs-items"></div>
+                        </div>
+                        <div class="statement-panel" data-statement="bs">
+                            <h3>Balance Sheet</h3>
+                            <div class="statement-items" id="bs-items"></div>
+                        </div>
+                    </div>
+                    <button class="submit-btn" id="builder-submit" onclick="checkBuilder()">Check Answer</button>
+                    <div class="explanation-box" id="builder-explanation" style="display:none;">
+                        <div class="explanation-header" id="builder-explanation-header"></div>
+                        <p id="builder-explanation-text"></p>
+                        <button class="next-btn" onclick="nextQuestion()">Next Question &#8594;</button>
+                    </div>
+                </div>
+
+                <!-- Fill-in-the-Blank: Walk the Statements -->
+                <div id="fillin-area" class="question-area" style="display:none;">
+                    <div class="question-card">
+                        <div class="scenario-badge">Walk the Statements</div>
+                        <h2 class="question-text" id="fillin-scenario"></h2>
+                    </div>
+                    <div class="fillin-grid" id="fillin-grid">
+                        <!-- Populated by JS: IS, CFS, BS panels with blanks -->
+                    </div>
+                    <div class="fillin-actions">
+                        <button class="submit-btn" id="fillin-submit" onclick="checkFillin()">Check Answer</button>
+                        <button class="submit-btn fillin-retry-btn" id="fillin-retry" onclick="retryFillin()" style="display:none;">Try Again</button>
+                    </div>
+                    <div class="fillin-feedback" id="fillin-feedback" style="display:none;">
+                        <!-- Shows per-field feedback on wrong answers -->
+                    </div>
+                    <div class="explanation-box" id="fillin-explanation" style="display:none;">
+                        <div class="explanation-header" id="fillin-explanation-header"></div>
+                        <p id="fillin-explanation-text"></p>
+                        <button class="next-btn" onclick="nextQuestion()">Next Question &#8594;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen">
+            <div class="results-container">
+                <div class="results-header">
+                    <div class="results-icon" id="results-icon"></div>
+                    <h2 id="results-title"></h2>
+                    <p id="results-subtitle"></p>
+                </div>
+                <div class="results-stats">
+                    <div class="result-stat">
+                        <div class="result-stat-value" id="result-score">0</div>
+                        <div class="result-stat-label">Score</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-value" id="result-correct">0/0</div>
+                        <div class="result-stat-label">Correct</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-value" id="result-streak">0</div>
+                        <div class="result-stat-label">Best Streak</div>
+                    </div>
+                </div>
+                <div class="results-breakdown" id="results-breakdown"></div>
+                <div class="results-actions">
+                    <button class="action-btn primary" onclick="retryLevel()">Try Again</button>
+                    <button class="action-btn secondary" id="next-level-btn" onclick="goNextLevel()">Next Level &#8594;</button>
+                    <button class="action-btn tertiary" onclick="showScreen('landing-screen')">Main Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Learn: Topic Select -->
+        <div id="learn-topics-screen" class="screen">
+            <div class="screen-container">
+                <button class="back-btn" onclick="showScreen('landing-screen')">&#8592; Back</button>
+                <h2>Learn the Concepts</h2>
+                <p class="learn-intro">Study each topic before you practice. Every concept includes <strong>what it is</strong>, <strong>why it works that way</strong>, and a <strong>concrete example</strong>.</p>
+                <div class="topic-grid" id="topic-grid"></div>
+            </div>
+        </div>
+
+        <!-- Learn: Lesson Viewer -->
+        <div id="lesson-screen" class="screen">
+            <div class="lesson-container">
+                <div class="lesson-header">
+                    <button class="back-btn" onclick="showScreen('learn-topics-screen')">&#8592; All Topics</button>
+                    <h2 id="lesson-topic-title"></h2>
+                    <div class="lesson-nav-info">
+                        <span id="lesson-card-counter">1 / 5</span>
+                    </div>
+                </div>
+
+                <div class="lesson-progress-bar">
+                    <div class="lesson-progress-fill" id="lesson-progress"></div>
+                </div>
+
+                <div class="lesson-card-area" id="lesson-card-area">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div class="lesson-footer">
+                    <button class="lesson-nav-btn" id="lesson-prev" onclick="lessonPrev()">&#8592; Previous</button>
+                    <div class="lesson-dots" id="lesson-dots"></div>
+                    <button class="lesson-nav-btn primary" id="lesson-next" onclick="lessonNext()">Next &#8594;</button>
+                </div>
+            </div>
+        </div>
+
+    <script src="lessons.js"></script>
+    <script src="questions.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
