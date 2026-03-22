@@ -70,7 +70,8 @@ function enterApp(name) {
 }
 
 function selectModule(moduleId) {
-    // For now only 'accounting' is available
+    setActiveModule(moduleId);
+    window.ACTIVE_MODULE_ID = moduleId;
     document.getElementById('module-screen').classList.remove('active');
     document.getElementById('landing-screen').classList.add('active');
     const session = getSession();
@@ -100,8 +101,8 @@ function getSession() {
 function getUserProgressKey() {
     const session = getSession();
     if (!session) return null;
-    // Unique key per user
-    return 'acct_progress_' + session.name.replace(/\s+/g, '_').toLowerCase();
+    const moduleId = window.ACTIVE_MODULE_ID || 'accounting';
+    return 'progress_' + moduleId + '_' + session.name.replace(/\s+/g, '_').toLowerCase();
 }
 
 function saveUserProgress(level, pct) {
@@ -122,7 +123,8 @@ function getUserProgress(level) {
 
 function renderProgressDashboard(name) {
     const container = document.getElementById('progress-overview');
-    const key = 'acct_progress_' + name.replace(/\s+/g, '_').toLowerCase();
+    const moduleId = window.ACTIVE_MODULE_ID || 'accounting';
+    const key = 'progress_' + moduleId + '_' + name.replace(/\s+/g, '_').toLowerCase();
     const data = JSON.parse(localStorage.getItem(key) || '{}');
 
     const levels = [

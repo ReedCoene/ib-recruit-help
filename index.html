@@ -72,12 +72,42 @@
                         <p>BIWS Accounting Guide — 14 Key Rules, 72 interview questions</p>
                         <div class="module-status">Available</div>
                     </button>
-                    <div class="module-card locked-module">
-                        <div class="module-icon">&#x1F512;</div>
-                        <h3>Coming Soon</h3>
-                        <p>More BIWS guides will be added here</p>
-                        <div class="module-status locked">Locked</div>
-                    </div>
+                    <button class="module-card active-module" onclick="selectModule('core')">
+                        <div class="module-icon">&#x1F3D7;</div>
+                        <h3>Core Financial Modeling</h3>
+                        <p>BIWS Core Concepts — 5 Key Rules: TVM, PV, IRR, WACC, Valuation</p>
+                        <div class="module-status">Available</div>
+                    </button>
+                    <button class="module-card active-module" onclick="selectModule('adv-accounting')">
+                        <div class="module-icon">&#x1F4D0;</div>
+                        <h3>Advanced Accounting</h3>
+                        <p>BIWS Advanced Accounting — 10 Key Rules: Debt, Convertibles, SBC, Pensions</p>
+                        <div class="module-status">Available</div>
+                    </button>
+                    <button class="module-card active-module" onclick="selectModule('ev')">
+                        <div class="module-icon">&#x1F4B9;</div>
+                        <h3>Equity Value & Enterprise Value</h3>
+                        <p>BIWS EV & Multiples Guide — 14 Key Rules: TEV Bridge, EBITDA, FCF</p>
+                        <div class="module-status">Available</div>
+                    </button>
+                    <button class="module-card active-module" onclick="selectModule('valuation')">
+                        <div class="module-icon">&#x1F4C9;</div>
+                        <h3>Valuation & DCF Analysis</h3>
+                        <p>BIWS Valuation Guide — 11 Key Rules: DCF, WACC, Terminal Value, Comps</p>
+                        <div class="module-status">Available</div>
+                    </button>
+                    <button class="module-card active-module" onclick="selectModule('ma')">
+                        <div class="module-icon">&#x1F91D;</div>
+                        <h3>M&A Deals & Merger Models</h3>
+                        <p>BIWS M&A Guide — 8 Key Rules: EPS Accretion/Dilution, Purchase Price</p>
+                        <div class="module-status">Available</div>
+                    </button>
+                    <button class="module-card active-module" onclick="selectModule('lbo')">
+                        <div class="module-icon">&#x1F4B0;</div>
+                        <h3>Leveraged Buyouts & LBO Models</h3>
+                        <p>BIWS LBO Guide — 9 Key Rules: Sources & Uses, Cash Flows, IRR, Exit</p>
+                        <div class="module-status">Available</div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -154,7 +184,7 @@
                 </div>
 
                 <div class="guide-notice">
-                    <strong>Note:</strong> This app is designed to reinforce and test your knowledge of the BIWS Accounting &amp; 3 Statements guide. Read the guide first before using this app.
+                    <strong>Note:</strong> <span id="guide-notice-text">This app is designed to reinforce and test your knowledge of the BIWS Accounting &amp; 3 Statements guide. Read the guide first before using this app.</span>
                 </div>
 
                 <div class="mode-select">
@@ -432,8 +462,21 @@
     </div>
 
     <script src="auth.js"></script>
+    <script src="modules.js"></script>
     <script src="lessons.js"></script>
     <script src="questions.js"></script>
+    <script src="lessons-core.js"></script>
+    <script src="questions-core.js"></script>
+    <script src="lessons-adv-accounting.js"></script>
+    <script src="questions-adv-accounting.js"></script>
+    <script src="lessons-ev.js"></script>
+    <script src="questions-ev.js"></script>
+    <script src="lessons-valuation.js"></script>
+    <script src="questions-valuation.js"></script>
+    <script src="lessons-ma.js"></script>
+    <script src="questions-ma.js"></script>
+    <script src="lessons-lbo.js"></script>
+    <script src="questions-lbo.js"></script>
     <script src="game.js"></script>
 </body>
 </html>

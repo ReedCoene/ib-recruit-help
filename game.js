@@ -57,12 +57,12 @@ function startLevel(level) {
     let pool = [];
     if (level === 1) {
         // Flashcards
-        pool = shuffle([...ALL_QUESTIONS[1]]).slice(0, state.questionsPerLevel);
+        pool = shuffle([...(window.ACTIVE_QUESTIONS)[1]]).slice(0, state.questionsPerLevel);
     } else {
         // Mix MC + ordering + fill-in-the-blank for this level
-        const mc = shuffle([...ALL_QUESTIONS[level] || []]);
-        const order = shuffle(ALL_QUESTIONS.order.filter(q => q.level === level));
-        const fillin = shuffle((ALL_QUESTIONS.fillin || []).filter(q => q.level === level));
+        const mc = shuffle([...((window.ACTIVE_QUESTIONS)[level] || [])]);
+        const order = shuffle((window.ACTIVE_QUESTIONS).order.filter(q => q.level === level));
+        const fillin = shuffle(((window.ACTIVE_QUESTIONS).fillin || []).filter(q => q.level === level));
         pool = shuffle([...mc, ...order, ...fillin]).slice(0, state.questionsPerLevel);
     }
 
@@ -70,7 +70,7 @@ function startLevel(level) {
     if (pool.length < state.questionsPerLevel) {
         // Pad with repeated shuffled questions
         while (pool.length < state.questionsPerLevel) {
-            const extra = shuffle([...(ALL_QUESTIONS[level] || [])]);
+            const extra = shuffle([...((window.ACTIVE_QUESTIONS)[level] || [])]);
             pool.push(...extra);
         }
         pool = pool.slice(0, state.questionsPerLevel);
@@ -96,7 +96,7 @@ function startChallenge() {
     // Mix questions from all levels
     let pool = [];
     for (let l = 2; l <= 6; l++) {
-        const qs = shuffle([...(ALL_QUESTIONS[l] || [])]).slice(0, 3);
+        const qs = shuffle([...(window.ACTIVE_QUESTIONS[l] || [])]).slice(0, 3);
         pool.push(...qs);
     }
     pool = shuffle(pool).slice(0, 15);
@@ -665,7 +665,7 @@ let lessonState = { topicIndex: 0, cardIndex: 0 };
 function openLearn() {
     const grid = document.getElementById('topic-grid');
     grid.innerHTML = '';
-    LESSONS.forEach((lesson, i) => {
+    window.ACTIVE_LESSONS.forEach((lesson, i) => {
         const card = document.createElement('button');
         card.className = 'mode-card';
         card.style.borderLeft = `4px solid ${lesson.color}`;
@@ -686,7 +686,7 @@ function openLearn() {
 function openLesson(topicIndex) {
     lessonState.topicIndex = topicIndex;
     lessonState.cardIndex = 0;
-    const lesson = LESSONS[topicIndex];
+    const lesson = window.ACTIVE_LESSONS[topicIndex];
 
     document.getElementById('lesson-topic-title').textContent = lesson.title;
 
@@ -734,7 +734,7 @@ function toggleLessonAudio() {
 }
 
 function renderLessonCard() {
-    const lesson = LESSONS[lessonState.topicIndex];
+    const lesson = window.ACTIVE_LESSONS[lessonState.topicIndex];
     const card = lesson.cards[lessonState.cardIndex];
     const area = document.getElementById('lesson-card-area');
 
@@ -758,7 +758,7 @@ function renderLessonCard() {
 }
 
 function updateLessonNav() {
-    const lesson = LESSONS[lessonState.topicIndex];
+    const lesson = window.ACTIVE_LESSONS[lessonState.topicIndex];
     const total = lesson.cards.length;
     const current = lessonState.cardIndex;
 
@@ -791,7 +791,7 @@ function lessonPrev() {
 }
 
 function lessonNext() {
-    const lesson = LESSONS[lessonState.topicIndex];
+    const lesson = window.ACTIVE_LESSONS[lessonState.topicIndex];
     if (lessonState.cardIndex < lesson.cards.length - 1) {
         lessonState.cardIndex++;
         renderLessonCard();

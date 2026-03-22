@@ -1702,7 +1702,7 @@ const fillinQuestions = [
 ];
 
 // Export all questions
-const ALL_QUESTIONS = {
+const QUESTIONS_ACCOUNTING = {
     1: level1Questions,
     2: level2Questions,
     3: level3Questions,

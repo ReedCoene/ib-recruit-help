@@ -1,7 +1,7 @@
 // Audio files hosted on GitHub Releases
 const AUDIO_BASE_URL = "https://github.com/ReedCoene/ib-recruit-help/releases/download/audio-v1/";
 
-const LESSONS = [
+const LESSONS_ACCOUNTING = [
     {
         id: "is-basics",
         title: "The Income Statement",
