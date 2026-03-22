@@ -28,6 +28,9 @@ const BLOOM_NAMES = {
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+    if (id === 'module-screen' && typeof refreshModuleCardProgress === 'function') {
+        refreshModuleCardProgress();
+    }
 }
 
 function startGame(mode) {

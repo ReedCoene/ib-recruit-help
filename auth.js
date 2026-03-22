@@ -67,6 +67,31 @@ function enterApp(name) {
     document.getElementById('user-greeting').textContent = `Welcome, ${firstName}`;
     document.getElementById('login-screen').classList.remove('active');
     document.getElementById('module-screen').classList.add('active');
+    refreshModuleCardProgress();
+}
+
+function refreshModuleCardProgress() {
+    const session = getSession();
+    if (!session) return;
+    const username = session.name.replace(/\s+/g, '_').toLowerCase();
+    const moduleIds = ['accounting', 'core', 'adv-accounting', 'ev', 'valuation', 'ma', 'lbo'];
+    moduleIds.forEach(function(moduleId) {
+        const key = 'progress_' + moduleId + '_' + username;
+        const data = JSON.parse(localStorage.getItem(key) || '{}');
+        const total = [1,2,3,4,5,6].reduce(function(sum, l) { return sum + (data[l] || 0); }, 0);
+        const avg = Math.round(total / 6);
+        const card = document.querySelector('[data-module="' + moduleId + '"]');
+        if (!card) return;
+        const wrap = card.querySelector('.module-progress-wrap');
+        if (!wrap) return;
+        if (avg > 0) {
+            wrap.querySelector('.module-progress-fill').style.width = avg + '%';
+            wrap.querySelector('.module-progress-pct').textContent = avg + '% complete';
+            wrap.style.display = '';
+        } else {
+            wrap.style.display = 'none';
+        }
+    });
 }
 
 function selectModule(moduleId) {

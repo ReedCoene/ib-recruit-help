@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IB Recruiting</title>
+    <meta name="theme-color" content="#6366f1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IB Recruiting">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -66,47 +73,75 @@
                     <p class="subtitle">Choose a module to study</p>
                 </div>
                 <div class="module-grid" id="module-grid">
-                    <button class="module-card active-module" onclick="selectModule('accounting')">
+                    <button class="module-card active-module" onclick="selectModule('accounting')" data-module="accounting">
                         <div class="module-icon">&#x1F4CA;</div>
                         <h3>Accounting & 3 Statements</h3>
                         <p>BIWS Accounting Guide — 14 Key Rules, 72 interview questions</p>
                         <div class="module-status">Available</div>
+                        <div class="module-progress-wrap" style="display:none">
+                            <div class="module-progress-bar"><div class="module-progress-fill"></div></div>
+                            <span class="module-progress-pct"></span>
+                        </div>
                     </button>
-                    <button class="module-card active-module" onclick="selectModule('core')">
+                    <button class="module-card active-module" onclick="selectModule('core')" data-module="core">
                         <div class="module-icon">&#x1F3D7;</div>
                         <h3>Core Financial Modeling</h3>
                         <p>BIWS Core Concepts — 5 Key Rules: TVM, PV, IRR, WACC, Valuation</p>
                         <div class="module-status">Available</div>
+                        <div class="module-progress-wrap" style="display:none">
+                            <div class="module-progress-bar"><div class="module-progress-fill"></div></div>
+                            <span class="module-progress-pct"></span>
+                        </div>
                     </button>
-                    <button class="module-card active-module" onclick="selectModule('adv-accounting')">
+                    <button class="module-card active-module" onclick="selectModule('adv-accounting')" data-module="adv-accounting">
                         <div class="module-icon">&#x1F4D0;</div>
                         <h3>Advanced Accounting</h3>
                         <p>BIWS Advanced Accounting — 10 Key Rules: Debt, Convertibles, SBC, Pensions</p>
                         <div class="module-status">Available</div>
+                        <div class="module-progress-wrap" style="display:none">
+                            <div class="module-progress-bar"><div class="module-progress-fill"></div></div>
+                            <span class="module-progress-pct"></span>
+                        </div>
                     </button>
-                    <button class="module-card active-module" onclick="selectModule('ev')">
+                    <button class="module-card active-module" onclick="selectModule('ev')" data-module="ev">
                         <div class="module-icon">&#x1F4B9;</div>
                         <h3>Equity Value & Enterprise Value</h3>
                         <p>BIWS EV & Multiples Guide — 14 Key Rules: TEV Bridge, EBITDA, FCF</p>
                         <div class="module-status">Available</div>
+                        <div class="module-progress-wrap" style="display:none">
+                            <div class="module-progress-bar"><div class="module-progress-fill"></div></div>
+                            <span class="module-progress-pct"></span>
+                        </div>
                     </button>
-                    <button class="module-card active-module" onclick="selectModule('valuation')">
+                    <button class="module-card active-module" onclick="selectModule('valuation')" data-module="valuation">
                         <div class="module-icon">&#x1F4C9;</div>
                         <h3>Valuation & DCF Analysis</h3>
                         <p>BIWS Valuation Guide — 11 Key Rules: DCF, WACC, Terminal Value, Comps</p>
                         <div class="module-status">Available</div>
+                        <div class="module-progress-wrap" style="display:none">
+                            <div class="module-progress-bar"><div class="module-progress-fill"></div></div>
+                            <span class="module-progress-pct"></span>
+                        </div>
                     </button>
-                    <button class="module-card active-module" onclick="selectModule('ma')">
+                    <button class="module-card active-module" onclick="selectModule('ma')" data-module="ma">
                         <div class="module-icon">&#x1F91D;</div>
                         <h3>M&A Deals & Merger Models</h3>
                         <p>BIWS M&A Guide — 8 Key Rules: EPS Accretion/Dilution, Purchase Price</p>
                         <div class="module-status">Available</div>
+                        <div class="module-progress-wrap" style="display:none">
+                            <div class="module-progress-bar"><div class="module-progress-fill"></div></div>
+                            <span class="module-progress-pct"></span>
+                        </div>
                     </button>
-                    <button class="module-card active-module" onclick="selectModule('lbo')">
+                    <button class="module-card active-module" onclick="selectModule('lbo')" data-module="lbo">
                         <div class="module-icon">&#x1F4B0;</div>
                         <h3>Leveraged Buyouts & LBO Models</h3>
                         <p>BIWS LBO Guide — 9 Key Rules: Sources & Uses, Cash Flows, IRR, Exit</p>
                         <div class="module-status">Available</div>
+                        <div class="module-progress-wrap" style="display:none">
+                            <div class="module-progress-bar"><div class="module-progress-fill"></div></div>
+                            <span class="module-progress-pct"></span>
+                        </div>
                     </button>
                 </div>
             </div>
@@ -512,5 +547,12 @@
     <script src="lessons-lbo.js"></script>
     <script src="questions-lbo.js"></script>
     <script src="game.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js');
+            });
+        }
+    </script>
 </body>
 </html>

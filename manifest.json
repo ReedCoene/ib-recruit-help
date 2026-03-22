@@ -1,0 +1,25 @@
+{
+  "name": "IB Recruiting",
+  "short_name": "IB Recruiting",
+  "description": "Master investment banking interview concepts with spaced-repetition flashcards and quizzes.",
+  "start_url": "/ib-recruit-help/",
+  "scope": "/ib-recruit-help/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f0f1a",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
