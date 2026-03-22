@@ -20,6 +20,16 @@ const adv_level1 = [
     { type: 'flashcard', term: 'Available-for-Sale (AFS) Securities', definition: 'Financial investments marked-to-market, but unrealized gains/losses go to Other Comprehensive Income (OCI), bypassing the Income Statement until sold. Reduces earnings volatility.' },
     { type: 'flashcard', term: 'Other Comprehensive Income (OCI)', definition: 'Catches unrealized gains/losses, pension adjustments, and currency translation adjustments that bypass the IS. Accumulated in AOCI within equity. Not included in Net Income.' },
     { type: 'flashcard', term: 'SBC Excess Tax Benefit', definition: 'When stock options are exercised, the tax deduction (intrinsic value at exercise) may exceed the original book expense. The extra tax savings = excess tax benefit. Flows through CFS as additional operating cash.' },
+
+    // FITB — Level 1
+    { type: 'fitb', context: 'PIK Interest', question: 'PIK interest is paid by issuing more ___ rather than cash, causing the outstanding principal balance to grow.', answer: 'debt', explanation: 'PIK (Payment-in-Kind) interest accretes the debt balance instead of requiring a cash outflow. It is non-cash and added back on the Cash Flow Statement.' },
+    { type: 'fitb', context: 'Equity Method', question: 'Under the equity method (20-50% ownership), you record your proportional share of the investee\'s ___ on your Income Statement.', answer: ['Net Income', 'net income'], explanation: 'Under the equity method you record % ownership × investee Net Income on your IS. You do NOT consolidate revenues. Dividends received reduce the BS investment account rather than appearing as income.' },
+    { type: 'fitb', context: 'LIFO Reserve', question: 'To convert a LIFO company\'s inventory to a FIFO basis for comparison, analysts ___ the LIFO Reserve to the reported inventory.', answer: ['add', 'add back'], explanation: 'LIFO inventory is understated relative to FIFO in inflationary periods. Adding the LIFO Reserve restates inventory to approximate FIFO values, enabling apples-to-apples comparison across companies.' },
+    { type: 'fitb', context: 'AFS Securities', question: 'For Available-for-Sale securities, unrealized gains and losses bypass the Income Statement and flow into ___ within equity.', answer: ['OCI', 'Other Comprehensive Income', 'AOCI'], explanation: 'AFS treatment routes mark-to-market changes through OCI / AOCI rather than Net Income. This prevents equity market swings from distorting reported EPS each quarter.' },
+    { type: 'fitb', context: 'NCI and TEV', question: 'When computing TEV for a company that consolidates a majority-owned subsidiary, analysts add ___ (at fair value) to Equity Value.', answer: ['NCI', 'Noncontrolling Interest', 'noncontrolling interest'], explanation: 'Because you consolidate 100% of EBITDA but only own part of the subsidiary, you must add NCI to TEV. Otherwise the EV/EBITDA multiple would be understated.' },
+    { type: 'fitb', context: 'OID', question: 'With an Original Issue Discount bond, the Book Value of debt on the Balance Sheet ___ each year until it equals Face Value at maturity.', answer: ['increases', 'rises', 'accretes'], explanation: 'OID amortization adds non-cash interest expense to the IS each year and accretes the book value of debt upward. At maturity, Book Value = Face Value.' },
+    { type: 'fitb', context: 'Convertible Bond', question: 'When a convertible bond is bifurcated on the Balance Sheet, the Equity Component equals the bond proceeds minus the ___ Component.', answer: ['Debt', 'Liability', 'debt', 'liability'], explanation: 'Debt Component = PV of cash flows at the market rate for equivalent non-convertible debt. Equity (APIC) = Total Proceeds – Debt Component. The equity piece represents the value of the conversion option.' },
+    { type: 'fitb', context: 'LIFO vs FIFO', question: 'LIFO is banned under ___ but permitted under U.S. GAAP.', answer: ['IFRS', 'ifrs'], explanation: 'IFRS prohibits LIFO because it produces Balance Sheet inventory values that diverge significantly from current costs. U.S. GAAP permits LIFO, which is why many U.S. companies use it for tax savings in inflationary environments.' },
 ];
 
 const adv_level2 = [
@@ -61,7 +71,15 @@ const adv_level2 = [
         ],
         correct: 1,
         explanation: 'LIFO uses the newest (most expensive in inflation) units as COGS → COGS is higher → Taxable Income and Net Income are lower → Cash Taxes decrease. This is the primary reason US companies use LIFO: real cash tax savings. The trade-off is lower reported Net Income and an understated inventory balance on the BS.'
-    }
+    },
+
+    // TF — Level 2
+    { type: 'tf', context: 'Market Value of Debt', question: 'When prevailing market interest rates fall, the market value of existing fixed-rate debt rises above its book value.', answer: true, explanation: 'True. When rates fall, existing bonds paying above-market coupons become more attractive. Investors will pay a premium above face value, so market value > book value. The bond pricing inverse relationship: rates down → prices up.' },
+    { type: 'tf', context: 'Equity Method', question: 'Under the equity method, dividends received from an investee increase the investor\'s Income Statement income.', answer: false, explanation: 'False. Under the equity method, dividends received are NOT additional income — they are a return of capital. Dividends reduce the BS investment account (not the IS). Income was already recognized when the investee earned it.' },
+    { type: 'tf', context: 'LIFO vs FIFO', question: 'LIFO produces higher Net Income than FIFO in an inflationary environment.', answer: false, explanation: 'False. LIFO charges the most recent (most expensive) inventory to COGS in inflation, which increases COGS and decreases Net Income. FIFO uses older, cheaper costs → lower COGS → higher Net Income. LIFO\'s benefit is lower cash taxes, not higher income.' },
+    { type: 'tf', context: 'Face vs Book Value', question: 'A company\'s Book Value of Debt on the Balance Sheet is always equal to its Face Value.', answer: false, explanation: 'False. Book Value differs from Face Value due to unamortized issuance fees, OID discounts or premiums, and PIK interest accruals. At maturity these converge, but during a debt\'s life they typically differ.' },
+    { type: 'tf', context: 'PIK Interest', question: 'PIK interest paid on a bond reduces the company\'s cash balance in the period it is paid.', answer: false, explanation: 'False. PIK interest is paid by issuing more debt, not cash. There is zero cash outflow. The outstanding debt principal increases by the PIK amount each period. On the CFS, PIK interest is a non-cash add-back.' },
+    { type: 'tf', context: 'Consolidation', question: 'A parent company that owns 60% of a subsidiary consolidates 60% of the subsidiary\'s revenue on its Income Statement.', answer: false, explanation: 'False. Full consolidation (>50%) means the parent consolidates 100% of the subsidiary\'s revenues, expenses, assets, and liabilities — then deducts the minority\'s share of Net Income as NCI at the bottom of the IS.' },
 ];
 
 const adv_level3 = [
@@ -90,7 +108,18 @@ const adv_level3 = [
         ],
         correct: 1,
         explanation: 'Full consolidation: you report 100% of EBITDA ($200M) on your IS and BS. But you only own 75%. For TEV, the 25% NCI represents a claim by minority shareholders that you must compensate to acquire the whole subsidiary. TEV = Equity Value + Debt + NCI (fair value) – Cash. Reporting 100% EBITDA but not adding NCI to TEV would understate the effective multiple you\'re paying.'
-    }
+    },
+
+    // TF — Level 3
+    { type: 'tf', context: 'Apply: OID', question: 'OID amortization is a cash expense that reduces operating cash flow on the Cash Flow Statement.', answer: false, explanation: 'False. OID amortization is non-cash — it appears as additional interest expense on the IS but is added back on the CFS (just like D&A). It increases book value of debt over time with no actual cash outflow.' },
+    { type: 'tf', context: 'Apply: Loss on Debt Extinguishment', question: 'If a company repays debt early when unamortized issuance fees remain, it records a Loss on Debt Extinguishment on the Income Statement.', answer: true, explanation: 'True. The remaining unamortized issuance fees must be written off immediately upon early repayment. This loss appears on the IS and is then added back as a non-cash item on the CFS.' },
+    { type: 'tf', context: 'Apply: Convertible Bond', question: 'When a convertible bond converts into shares before maturity, the company records new cash proceeds on the Cash Flow Statement.', answer: false, explanation: 'False. Conversion into shares is a non-cash transaction — no cash changes hands. The liability and equity components of the convertible bond are transferred into Common Shareholders\' Equity. The CFS does not show a direct cash impact.' },
+
+    // FITB — Level 3
+    { type: 'fitb', context: 'Apply: OID', question: 'A $100M bond issued at $95M has an OID of $5M. Over a 5-year life, the annual non-cash OID amortization is $___ per year.', answer: ['1', '$1M', '1M', '1.0'], explanation: 'OID = $5M / 5 years = $1M per year (straight-line). Each year, $1M of non-cash interest expense is recorded, and the book value of debt increases by $1M toward the $100M face value at maturity.' },
+    { type: 'fitb', context: 'Apply: Equity Method', question: 'Parent owns 30% of Sub. Sub earns $100M NI and pays $40M in dividends. Cash dividends received by Parent = $___.', answer: ['12', '$12M', '12M'], explanation: '30% × $40M = $12M in cash dividends received. The BS investment account increases by 30% × $100M = $30M and decreases by $12M (dividends), for a net increase of $18M.' },
+    { type: 'fitb', context: 'Apply: Convertible Bond', question: 'A $500M convertible bond is bifurcated: Debt Component (PV at market rate) = $415M. The Equity Component (APIC) = $___.', answer: ['85', '$85M', '85M'], explanation: 'Equity Component = Proceeds – Debt Component = $500M – $415M = $85M. This $85M goes to APIC and represents the value of the conversion option granted to bondholders.' },
+    { type: 'fitb', context: 'Apply: NCI', question: 'A parent consolidates 100% of a subsidiary\'s EBITDA but only owns 70%. For TEV purposes, analysts add ___ (at fair value) to Equity Value.', answer: ['NCI', 'Noncontrolling Interest', 'noncontrolling interest', '30% NCI'], explanation: 'The 30% minority interest is a claim you must compensate to control the entire subsidiary. Adding NCI to TEV ensures the EV/EBITDA multiple correctly reflects the full economic cost of the 100% EBITDA you report.' },
 ];
 
 const adv_level4 = [
@@ -106,7 +135,17 @@ const adv_level4 = [
         ],
         correct: 1,
         explanation: 'The underfunded portion ($200M) represents a real cash obligation — the company will need to fund this gap with future cash flows, reducing FCF available to investors. Economically, it\'s debt-like. For accurate TEV: add the net pension liability. Adding the full $700M would overstate the cost because there are $500M of pension assets that will pay some retirees. Net unfunded deficit = $200M is the right adjustment.'
-    }
+    },
+
+    // TF — Level 4
+    { type: 'tf', context: 'Analyze: Pension TEV', question: 'An underfunded pension is treated as a debt-like item and added to TEV when computing valuation multiples such as EV/EBITDA.', answer: true, explanation: 'True. The net unfunded pension liability (obligation – assets) represents future cash commitments similar to debt. Adding it to TEV prevents artificially low EV/EBITDA multiples for companies with large pension obligations.' },
+    { type: 'tf', context: 'Analyze: LIFO to FIFO Conversion', question: 'When converting a LIFO company\'s financial statements to FIFO for comparability, analysts subtract the LIFO Reserve from the balance sheet inventory.', answer: false, explanation: 'False. Analysts ADD the LIFO Reserve to inventory to convert to FIFO. LIFO inventory is understated versus FIFO in inflation; the LIFO Reserve bridges this gap. Subtracting it would make inventory even lower, which is the opposite of the goal.' },
+    { type: 'tf', context: 'Analyze: Trading vs AFS', question: 'A company with a large portfolio of equity investments will report more volatile quarterly earnings if those securities are classified as Trading rather than AFS.', answer: true, explanation: 'True. Trading securities flow unrealized gains/losses through Net Income each quarter. AFS securities route the same changes through OCI, leaving Net Income unaffected. The income statement volatility difference can be substantial for large portfolios.' },
+    { type: 'tf', context: 'Analyze: SBC Excess Tax Benefit', question: 'When stock options are exercised and their value has increased since grant, the company receives an additional cash tax benefit beyond what was originally expensed.', answer: true, explanation: 'True. The tax deduction is based on the intrinsic value at exercise, which may exceed the original book expense. The incremental tax savings (excess tax benefit) flows through the CFS as additional operating cash and reduces income taxes paid.' },
+
+    // FITB — Level 4
+    { type: 'fitb', context: 'Analyze: Pension', question: 'A company\'s pension obligation is $700M and pension assets are $500M. The net pension liability added to TEV is $___.', answer: ['200', '$200M', '200M'], explanation: 'Net pension liability = Obligation – Assets = $700M – $500M = $200M. Only the underfunded portion is debt-like. Adding the full $700M would double-count the assets that already offset part of the obligation.' },
+    { type: 'tf', context: 'Analyze: OID and Book Value', question: 'At the maturity of an OID bond, the book value of debt on the Balance Sheet equals the bond\'s face value.', answer: true, explanation: 'True. OID amortization accretes the book value upward each year from the initial discount price toward face value. By maturity, all discount has been amortized and Book Value = Face Value.' },
 ];
 
 const adv_level5 = [
@@ -122,7 +161,14 @@ const adv_level5 = [
         ],
         correct: 1,
         explanation: 'AFS: unrealized gains/losses → OCI → equity on BS, bypassing Net Income. Reported EPS is stable and unaffected by equity market swings. Trading: unrealized gains/losses → IS → directly inflates or depresses reported Net Income each quarter. Banks and insurance companies with large investment portfolios strongly prefer AFS to avoid the earnings volatility that investors hate.'
-    }
+    },
+
+    // TF — Level 5
+    { type: 'tf', context: 'Evaluate: LIFO Tax Strategy', question: 'A U.S. company using LIFO in an inflationary environment pays higher cash taxes than if it used FIFO.', answer: false, explanation: 'False. LIFO produces higher COGS → lower taxable income → lower cash taxes. This is the primary reason U.S. companies elect LIFO. The trade-off is lower reported Net Income and an understated inventory balance — but the cash tax savings are real.' },
+    { type: 'tf', context: 'Evaluate: Consolidation at TEV', question: 'If a parent company consolidates 100% of a subsidiary\'s EBITDA but does not add NCI to TEV, the resulting EV/EBITDA multiple will be overstated.', answer: false, explanation: 'False — the multiple will be UNDERSTATED. Leaving NCI out understates TEV (the numerator), while EBITDA (the denominator) already includes 100% of the subsidiary. A lower TEV relative to full EBITDA gives an artificially low multiple, making the deal look cheaper than it is.' },
+    { type: 'tf', context: 'Evaluate: Pension Expense', question: 'Most components of Pension Expense on the Income Statement represent actual cash payments made to retirees in that period.', answer: false, explanation: 'False. Pension IS expense is mostly non-cash — it includes Service Cost (accrual of future obligations), Interest Cost (PV unwinding), and amortization of actuarial gains/losses. Actual cash outflows are the Employer Contributions, which appear on the CFS.' },
+    { type: 'tf', context: 'Evaluate: Equity Method Revenue', question: 'Under the equity method, the investor company consolidates its ownership percentage of the investee\'s revenue on its own Income Statement.', answer: false, explanation: 'False. The equity method records only the investor\'s share of net income as a single line item near the bottom of the IS. Revenues are never consolidated under the equity method — full revenue consolidation only occurs when ownership exceeds 50%.' },
+    { type: 'tf', context: 'Evaluate: AFS Gain Realization', question: 'When an AFS security is sold, the previously unrealized gain that was sitting in AOCI is reclassified and recognized in Net Income.', answer: true, explanation: 'True. Upon sale, the cumulative unrealized gain in AOCI is "recycled" into the Income Statement as a realized gain. This is the point at which it affects Net Income and tax. Until sale, it only appears in AOCI within equity.' },
 ];
 
 const adv_level6 = [

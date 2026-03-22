@@ -93,7 +93,51 @@ const ev_level2 = [
         ],
         correct: 1,
         explanation: 'EBITDA adds back D&A, which is linked to CapEx. For capital-intensive businesses, D&A is NOT just an accounting expense — it represents real asset wear and tear that requires ongoing reinvestment. EBIT keeps D&A in, making it a more honest reflection of true cash generation. EBITDA can make capital-hungry businesses look more profitable than they really are.'
-    }
+    },
+    // NEW TF — level 2
+    {
+        type: 'tf',
+        context: 'Enterprise Value Basics',
+        question: 'Issuing $500M of new debt and holding the proceeds as cash will increase a company\'s Enterprise Value by $500M.',
+        answer: false,
+        explanation: 'Financing events do not change Enterprise Value in theory (Modigliani-Miller). Debt +$500M and Cash +$500M cancel exactly in the TEV bridge (TEV = Equity Value + Debt – Cash). Only changes to net operating assets affect TEV.'
+    },
+    {
+        type: 'tf',
+        context: 'Current Equity Value',
+        question: 'A company\'s Current Equity Value (market cap) can never be negative for a publicly traded firm.',
+        answer: true,
+        explanation: 'Share price cannot be negative and share count cannot be negative, so their product — Current Equity Value — is mathematically impossible to be negative. Current Enterprise Value, however, can be negative if cash exceeds equity value plus debt.'
+    },
+    // NEW FITB — level 1
+    {
+        type: 'fitb',
+        context: 'TEV Bridge',
+        question: 'Enterprise Value = Equity Value + Debt + Preferred Stock + Noncontrolling Interest – ___.',
+        answer: ['Cash', 'Cash & Equivalents', 'Cash and Equivalents'],
+        explanation: 'Cash is the key non-operating asset subtracted when bridging from Equity Value to Enterprise Value. An acquirer inherits cash, reducing net cost.'
+    },
+    {
+        type: 'fitb',
+        context: 'Metric Pairing',
+        question: 'TEV/EBITDA is preferred over P/E for M&A comparisons because it is ___ neutral.',
+        answer: ['capital structure', 'capital-structure'],
+        explanation: 'EBITDA is before interest (which belongs to debt holders), so TEV/EBITDA removes the effect of how a company is financed, enabling apples-to-apples comparisons across companies with different debt levels.'
+    },
+    {
+        type: 'fitb',
+        context: 'Dilution',
+        question: 'Under the Treasury Stock Method, out-of-the-money options are ___ from the diluted share count.',
+        answer: ['excluded', 'omitted'],
+        explanation: 'Only in-the-money options (strike price < current share price) are included in the diluted share count under TSM. Out-of-the-money options would not be exercised rationally, so they are excluded.'
+    },
+    {
+        type: 'fitb',
+        context: 'Multiples',
+        question: 'The most common valuation multiple used in M&A transactions is TEV/___.',
+        answer: ['EBITDA'],
+        explanation: 'TEV/EBITDA dominates M&A because it is capital structure-neutral, removes D&A accounting differences, and is available for most companies (unlike P/E, which fails when earnings are negative).'
+    },
 ];
 
 const ev_level3 = [
@@ -125,7 +169,37 @@ const ev_level3 = [
         options: ['$100', '$150', '$100', '$200'],
         correct: 0,
         explanation: 'FCFF = EBIT × (1–t) + D&A – CapEx – ΔWC = $200 × 0.75 + $50 – $80 – $20 = $150 + $50 – $80 – $20 = $100. Note: FCFF does NOT include net borrowing because it represents cash for ALL investors before any financing flows. Net Borrowing only appears in FCFE (levered FCF).'
-    }
+    },
+    // NEW TF — level 3
+    {
+        type: 'tf',
+        context: 'Events Impact on TEV',
+        question: 'When a company issues $100M of common stock and uses all proceeds to acquire an operating business, Enterprise Value increases by $100M.',
+        answer: true,
+        explanation: 'The stock issuance raises Equity Value by $100M. The proceeds fund an acquisition of operating assets (Net Operating Assets rise by $100M), so TEV also rises by $100M. If the proceeds had simply sat as cash, TEV would be unchanged.'
+    },
+    {
+        type: 'tf',
+        context: 'Noncontrolling Interest',
+        question: 'Noncontrolling Interest is subtracted when moving from Equity Value to Enterprise Value because it represents value you do not own.',
+        answer: false,
+        explanation: 'NCI is ADDED to TEV. When you consolidate 100% of a subsidiary\'s EBITDA but own only, say, 80%, the 20% NCI represents another investor group\'s claim. You add it so the numerator (TEV) is consistent with the denominator (which includes 100% of EBITDA).'
+    },
+    // NEW FITB — level 3
+    {
+        type: 'fitb',
+        context: 'Comps',
+        question: 'Implied Equity Value = Implied TEV – Debt + ___.',
+        answer: ['Cash', 'Cash & Equivalents'],
+        explanation: 'The TEV bridge in reverse: start with implied TEV, subtract net debt (add back cash, subtract debt) to arrive at implied Equity Value, then divide by diluted shares for implied share price.'
+    },
+    {
+        type: 'fitb',
+        context: 'Valuation Multiples',
+        question: 'TEV/Revenue is most commonly used for companies that are high-growth or ___.',
+        answer: ['pre-profit', 'unprofitable', 'money-losing'],
+        explanation: 'When a company has no EBITDA or earnings (pre-profit stage), TEV/Revenue is often the only viable positive multiple available for comparison.'
+    },
 ];
 
 const ev_level4 = [
@@ -154,7 +228,37 @@ const ev_level4 = [
         ],
         correct: 2,
         explanation: 'Pre-revenue pharma is a special case. Standard multiples (P/E, TEV/EBITDA) are meaningless when there\'s no revenue or positive EBITDA. The correct approach is a probability-weighted NPV of each drug\'s peak sales potential, discounted at a risk-adjusted rate (often 10-15% for established drugs). This is a sector-specific income approach.'
-    }
+    },
+    // NEW TF — level 4
+    {
+        type: 'tf',
+        context: 'Precedent Transactions',
+        question: 'Precedent transaction multiples are typically higher than public comparable company multiples because acquirers pay a control premium.',
+        answer: true,
+        explanation: 'Acquirers pay 20-40% above the undisturbed public market price to win control of a company. This control premium (reflecting expected synergies and the value of control) causes precedent transaction multiples to exceed public comps multiples on average.'
+    },
+    {
+        type: 'tf',
+        context: 'Enterprise Value Negative',
+        question: 'A company\'s Current Enterprise Value can be negative if its cash balance exceeds its equity value plus all debt.',
+        answer: true,
+        explanation: 'TEV = Equity Value + Debt – Cash. If Cash > Equity Value + Debt, TEV is negative. This is rare but occurs for distressed companies burning cash rapidly. A negative TEV theoretically means you can "buy cash at a discount."'
+    },
+    // NEW FITB — level 4
+    {
+        type: 'fitb',
+        context: 'Equity Investments',
+        question: 'Equity investments in other companies (minority stakes < 20%) are ___ from Enterprise Value in the TEV bridge.',
+        answer: ['subtracted', 'deducted'],
+        explanation: 'You subtract equity investments from TEV because you do NOT include those companies\' revenue or EBITDA in your consolidated financials. Including their value in TEV but not their earnings in the multiple denominator would mismatch numerator and denominator.'
+    },
+    {
+        type: 'fitb',
+        context: 'Multiple Expansion',
+        question: 'If a company is acquired at 7x EBITDA and sold at 9x EBITDA with the same earnings, the return from the higher exit multiple is called ___ expansion.',
+        answer: ['multiple'],
+        explanation: 'Multiple expansion is the return earned purely from selling at a higher valuation multiple than the entry price, independent of any growth in the underlying earnings. PE firms prefer deals that do not rely on this.'
+    },
 ];
 
 const ev_level5 = [
@@ -183,7 +287,37 @@ const ev_level5 = [
         ],
         correct: 1,
         explanation: 'Precedents are typically higher. An acquirer pays a CONTROL PREMIUM on top of the public market price — they\'re paying for the right to control the company, synergies, and to win a competitive process. The premium historically runs 20-40% above undisturbed share price. This is why investment bankers often use precedents to argue for a higher purchase price.'
-    }
+    },
+    // NEW TF — level 5
+    {
+        type: 'tf',
+        context: 'Valuation Multiples',
+        question: 'Enterprise Value is defined as the "theoretical takeover price" of a company — the amount an acquirer must pay to buy it.',
+        answer: false,
+        explanation: 'This is a common myth. Enterprise Value is the value of a company\'s core business operations to ALL investors. The actual acquisition price depends on deal structure, how debt is handled, synergy expectations, and deal fees — none of which are captured in TEV. The minimum purchase price is the target\'s Equity Value, not its TEV.'
+    },
+    {
+        type: 'tf',
+        context: 'LTM vs. NTM',
+        question: 'NTM (Next Twelve Months) multiples are typically lower than LTM multiples for a growing company, because expected future earnings are higher.',
+        answer: true,
+        explanation: 'For a growing company, NTM earnings are higher than LTM earnings. Since the multiple = TEV / earnings, a larger denominator produces a lower multiple. NTM multiples thus compress relative to LTM, which is why fast-growing companies often screen as "expensive" on LTM but more reasonable on NTM.'
+    },
+    // NEW FITB — level 3 (assigned level 3 per rules, added here for collection)
+    {
+        type: 'fitb',
+        context: 'Comps vs. Precedents',
+        question: 'Precedent transaction multiples are higher than public comps multiples because buyers pay a ___ premium.',
+        answer: ['control'],
+        explanation: 'The control premium (historically 20-40% above undisturbed share price) is paid by acquirers to gain control of the target company. This premium is baked into precedent transaction multiples but absent from public comps multiples.'
+    },
+    {
+        type: 'fitb',
+        context: 'FCFF vs. FCFE',
+        question: 'FCFF pairs with ___ as the discount rate in a DCF, while FCFE pairs with the Cost of Equity.',
+        answer: ['WACC'],
+        explanation: 'FCFF (Unlevered FCF) is cash available to ALL investors, so it is discounted at WACC (which blends the required return for all investor groups). FCFE is cash only for equity holders, discounted at Cost of Equity.'
+    },
 ];
 
 const ev_level6 = [

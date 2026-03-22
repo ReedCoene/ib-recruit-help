@@ -72,7 +72,37 @@ const val_level2 = [
         ],
         correct: 1,
         explanation: 'FCFF is unlevered — it represents cash for ALL investors. Starting from Net Income would include interest expense effects, making the cash flow "equity-only." To be consistent with discounting at WACC (which represents all investors), you start from EBIT (before interest) and use NOPAT = EBIT × (1–t) as your starting point.'
-    }
+    },
+    // NEW TF — level 2
+    {
+        type: 'tf',
+        context: 'DCF Basics',
+        question: 'In a standard DCF, you discount Free Cash Flows at the Cost of Equity because equity holders bear the most risk.',
+        answer: false,
+        explanation: 'In a standard DCF using Unlevered FCF (FCFF), you discount at WACC — the blended required return for ALL investors (equity and debt). The Cost of Equity is only the correct discount rate when you use Levered FCF (FCFE), which represents cash available solely to equity holders.'
+    },
+    {
+        type: 'tf',
+        context: 'Terminal Value',
+        question: 'Terminal Value typically accounts for 60-80% of total implied DCF value, even with a 5-10 year explicit forecast period.',
+        answer: true,
+        explanation: 'Because the Gordon Growth Model captures all cash flows in perpetuity beyond the forecast period, and those distant cash flows sum to a very large number, Terminal Value dominates DCF output. This is why small changes in the terminal growth rate or exit multiple have such an outsized impact on the final result.'
+    },
+    // NEW FITB — level 1
+    {
+        type: 'fitb',
+        context: 'CAPM',
+        question: 'Cost of Equity = Risk-Free Rate + Beta × ___.',
+        answer: ['Equity Risk Premium', 'ERP'],
+        explanation: 'CAPM states that the required return on equity equals the risk-free rate plus compensation for systematic (market) risk. Beta scales the Equity Risk Premium to reflect the specific stock\'s volatility relative to the market.'
+    },
+    {
+        type: 'fitb',
+        context: 'WACC',
+        question: 'The after-tax cost of debt = Pre-Tax Cost of Debt × (1 – ___).',
+        answer: ['Tax Rate', 'tax rate'],
+        explanation: 'Interest expense is tax-deductible, creating a tax shield. Multiplying by (1 – Tax Rate) converts the pre-tax rate to the after-tax rate used in WACC. Preferred dividends are NOT tax-deductible, so this adjustment does not apply to preferred stock.'
+    },
 ];
 
 const val_level3 = [
@@ -99,7 +129,44 @@ const val_level3 = [
         options: ['$1,000M', '$1,717M', '$1,100M', '$1,500M'],
         correct: 1,
         explanation: 'TV = FCF(n+1) / (WACC – g) = ($100 × 1.03) / (9% – 3%) = $103 / 6% = $1,717M. Important: use NEXT year\'s FCF in the numerator (Year 6 = Year 5 × (1+g)), not Year 5 FCF directly. This is a common exam error.'
-    }
+    },
+    // NEW TF — level 3
+    {
+        type: 'tf',
+        context: 'FCF Projections',
+        question: 'Stock-based compensation (SBC) should be added back as a non-cash expense when calculating Unlevered Free Cash Flow for a DCF.',
+        answer: false,
+        explanation: 'SBC is NOT a true non-cash expense like D&A. It creates new shares that dilute existing investors — a real economic cost. Adding it back gives a "free lunch" by ignoring the dilution cost. SBC should NOT be added back in FCFF projections. Only D&A (and occasionally deferred taxes) should be added back among non-cash items.'
+    },
+    {
+        type: 'tf',
+        context: 'Terminal Growth Rate',
+        question: 'The terminal growth rate used in a Gordon Growth Model can be set higher than a company\'s long-run projected GDP growth rate if the company operates in a high-growth industry.',
+        answer: false,
+        explanation: 'The terminal growth rate must be less than WACC (or the formula breaks) and should not exceed long-run GDP growth (typically 2-4%). In perpetuity, no company can grow faster than the economy forever — it would eventually become larger than the entire economy. High-growth phases are captured in the explicit forecast period, not in the terminal period.'
+    },
+    // NEW FITB — level 3
+    {
+        type: 'fitb',
+        context: 'Terminal Value',
+        question: 'Gordon Growth Model Terminal Value = FCF(n+1) / (WACC – ___).',
+        answer: ['g', 'terminal growth rate'],
+        explanation: 'The denominator (WACC – g) is the key driver of Terminal Value sensitivity. Because both values are percentages and WACC is only modestly above g, small changes in either create large changes in terminal value. This denominator is sometimes called the "cap rate."'
+    },
+    {
+        type: 'fitb',
+        context: 'FCFF',
+        question: 'NOPAT = EBIT × (1 – ___).',
+        answer: ['Tax Rate', 'tax rate', 't'],
+        explanation: 'Net Operating Profit After Taxes strips out the effect of interest expense on taxes, isolating after-tax operating profit for ALL investors. It is the starting point for unlevered FCF, ensuring capital structure neutrality.'
+    },
+    {
+        type: 'fitb',
+        context: 'Valuation Methods',
+        question: 'DCF is called ___ valuation because it values a company based on its own projected cash flows, not comparisons to other companies.',
+        answer: ['intrinsic', 'fundamental'],
+        explanation: 'Intrinsic valuation (DCF) derives value from the company\'s own fundamentals — its future cash flows discounted to the present. Relative valuation (comps, precedents) values a company by reference to how similar companies are priced in the market.'
+    },
 ];
 
 const val_level4 = [
@@ -128,7 +195,37 @@ const val_level4 = [
         ],
         correct: 1,
         explanation: 'Precedent transactions represent what acquirers have actually PAID in real deals, including control premiums and synergies. $42 falls below the $45-60 range of precedents, meaning historically buyers have paid more. A sell-side banker (representing the seller) would argue the offer is too low and push for $45+ using precedents as justification.'
-    }
+    },
+    // NEW TF — level 4
+    {
+        type: 'tf',
+        context: 'Beta and WACC',
+        question: 'When estimating Beta for a DCF, it is more accurate to use the subject company\'s own historical Beta rather than an unlevered and re-levered Beta derived from peer companies.',
+        answer: false,
+        explanation: 'A company\'s historical Beta reflects its Current Value — past capital structure and risk. For a DCF you want the Implied Value, which reflects how the company should be priced going forward. Using peer median unlevered Betas (then re-levering at the target structure) is the preferred approach because it is forward-looking and removes idiosyncratic capital structure noise from each peer.'
+    },
+    {
+        type: 'tf',
+        context: 'Valuation Methods',
+        question: 'For a stable, cash-generative private company being sold in an M&A process, precedent transactions are typically given more weight than the DCF because they directly reflect what buyers have paid in real deals.',
+        answer: true,
+        explanation: 'Precedent transactions capture control premiums, synergy expectations, and real deal dynamics — all directly relevant to an M&A sale. A DCF is highly sensitive to assumptions and is often used as a sanity check. In an M&A context, bankers weight precedents most heavily because the question is: "What has someone actually paid for a similar business?"'
+    },
+    // NEW FITB — level 4
+    {
+        type: 'fitb',
+        context: 'Unlevered Beta',
+        question: 'To isolate pure business risk from leverage risk, you must ___ a peer company\'s observed Beta before averaging across the peer group.',
+        answer: ['unlever', 'un-lever'],
+        explanation: 'Each peer company\'s observed (levered) Beta reflects both business risk and its specific capital structure risk. Unlevering removes the leverage effect so you can average pure business-risk Betas across peers, then re-lever at the subject company\'s target capital structure.'
+    },
+    {
+        type: 'fitb',
+        context: 'Sensitivity Analysis',
+        question: 'A DCF sensitivity table most commonly shows implied value across a range of WACC assumptions on one axis and ___ on the other.',
+        answer: ['terminal growth rate', 'g', 'growth rate'],
+        explanation: 'WACC and terminal growth rate are the two most sensitive inputs in any DCF. Presenting a matrix of outcomes across ranges of both assumptions is standard practice and shows the full range of reasonable implied values to the client or board.'
+    },
 ];
 
 const val_level5 = [
@@ -157,7 +254,44 @@ const val_level5 = [
         ],
         correct: 1,
         explanation: 'For an M&A transaction, precedent transactions are usually weighted most heavily because they show what buyers have actually paid for similar companies in real deals, including control premiums. DCF is important for sanity-checking the underlying value and stress-testing scenarios. Comps reflect today\'s market but don\'t include the control premium the acquirer must pay.'
-    }
+    },
+    // NEW TF — level 5
+    {
+        type: 'tf',
+        context: 'DCF Limitations',
+        question: 'A DCF is considered "intrinsic" valuation because it is objective and independent of the analyst\'s assumptions about growth and margins.',
+        answer: false,
+        explanation: 'DCF is called intrinsic valuation because it is based on the company\'s own cash flows rather than market comparisons — NOT because it is objective. In reality, DCF is highly subjective: small changes to revenue growth, margins, WACC, and terminal growth rate produce wildly different outputs. The garbage-in, garbage-out (GIGO) problem is the primary weakness of DCF analysis.'
+    },
+    {
+        type: 'tf',
+        context: 'Football Field',
+        question: 'In a football field valuation summary, DCF typically produces the widest valuation range because it is most sensitive to assumption changes.',
+        answer: true,
+        explanation: 'DCF ranges are typically the widest on a football field chart because the output is extremely sensitive to WACC and terminal growth rate. A WACC range of 8-12% and g range of 2-4% can produce implied values that vary by 50% or more. By contrast, comps and precedents produce narrower ranges tied to observed market multiples.'
+    },
+    // NEW FITB — level 2 and 3
+    {
+        type: 'fitb',
+        context: 'DCF Output',
+        question: 'A DCF discounting FCFF at WACC produces an Implied ___, which must be bridged to Equity Value by subtracting net debt.',
+        answer: ['Enterprise Value', 'TEV'],
+        explanation: 'FCFF + WACC → Implied Enterprise Value. To get to Implied Equity Value (and then implied share price), you subtract Net Debt (Debt – Cash). This is the same TEV bridge used in comps, just in reverse.'
+    },
+    {
+        type: 'fitb',
+        context: 'WACC',
+        question: 'The cost of debt is multiplied by (1 – Tax Rate) in the WACC formula because interest expense is ___.',
+        answer: ['tax-deductible', 'tax deductible'],
+        explanation: 'Interest expense reduces taxable income, creating a tax shield. This makes debt cheaper on an after-tax basis than its stated coupon rate. Preferred dividends do NOT have this benefit — they are paid from after-tax income and are excluded from the (1 – Tax Rate) adjustment.'
+    },
+    {
+        type: 'fitb',
+        context: 'Valuation Range',
+        question: 'The horizontal bar chart that displays valuation ranges from DCF, public comps, and precedent transactions side by side is called a ___ chart.',
+        answer: ['football field', 'football-field'],
+        explanation: 'The football field chart is a standard IB deliverable showing the valuation range implied by each method. It allows clients and boards to see where current market price sits relative to implied value ranges and which methods are most supportive of a transaction.'
+    },
 ];
 
 const val_level6 = [

@@ -825,6 +825,58 @@ body {
 
 .submit-btn:hover { background: var(--primary-light); transform: translateY(-2px); }
 
+/* === TRUE / FALSE === */
+.tf-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 24px 0;
+}
+.tf-btn {
+    flex: 1;
+    max-width: 200px;
+    padding: 20px 32px;
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    transition: var(--transition);
+}
+.tf-btn.tf-true { background: var(--success-bg); color: var(--success); border-color: var(--success); }
+.tf-btn.tf-false { background: var(--error-bg); color: var(--error); border-color: var(--error); }
+.tf-btn:hover:not(:disabled) { transform: translateY(-2px); filter: brightness(1.08); }
+.tf-btn:disabled { opacity: 0.5; cursor: default; transform: none; }
+.tf-btn.selected-correct { opacity: 1; filter: brightness(1.1); box-shadow: 0 0 0 3px var(--success); }
+.tf-btn.selected-wrong { opacity: 1; filter: brightness(1.1); box-shadow: 0 0 0 3px var(--error); }
+.tf-btn.revealed { opacity: 1; }
+
+/* === SHORT FILL-IN-THE-BLANK === */
+.fitb-input-row {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    align-items: center;
+}
+.fitb-input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+.fitb-input:focus { border-color: var(--primary); }
+.fitb-input.correct { border-color: var(--success); background: var(--success-bg); }
+.fitb-input.wrong { border-color: var(--error); background: var(--error-bg); }
+.fitb-submit-btn { margin: 0; display: inline-block; }
+
 /* === STATEMENT BUILDER === */
 .statements-grid {
     display: grid;

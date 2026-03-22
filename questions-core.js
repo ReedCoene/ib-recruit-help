@@ -26,6 +26,16 @@ const core_level1 = [
     { type: 'flashcard', term: 'Key Drivers', definition: 'The 3-5 variables that most heavily determine a company\'s revenue and costs. Different by industry. Identifying the right key drivers is what separates a useful model from a useless one.' },
     { type: 'flashcard', term: 'Compounding', definition: 'Earning interest on your interest (not just on your principal). The mechanism that causes money to grow exponentially over time. More powerful with higher rates and longer time horizons.' },
     { type: 'flashcard', term: 'Multiple on Invested Capital (MoIC / MoM)', definition: 'Final Value ÷ Initial Investment. Measures the total return as a multiple — e.g., 2.5x means you turned $100 into $250. Used alongside IRR in private equity to evaluate deal returns.' },
+
+    // FITB — Level 1
+    { type: 'fitb', context: 'Time Value of Money', question: 'Even with zero inflation, money today is worth more than the same amount in the future because you could ___ it and earn a return.', answer: 'invest', explanation: 'The primary driver of TVM is opportunity cost — the ability to invest money today and earn something by next year. Inflation is a secondary consideration.' },
+    { type: 'fitb', context: 'Discount Rate', question: 'The Discount Rate represents your ___ — what you could earn by investing in other, similar opportunities.', answer: ['opportunity cost', 'targeted yield'], explanation: 'The Discount Rate is your opportunity cost or targeted yield. If you don\'t invest here, how much could you earn elsewhere at the same risk level?' },
+    { type: 'fitb', context: 'Valuation Formula', question: 'For a company with no cash flow growth, Company Value = Cash Flow / ___.', answer: ['Discount Rate', 'discount rate'], explanation: 'With no growth, the perpetuity formula simplifies to Value = CF / r. Growth adds value by widening future cash flows beyond this baseline.' },
+    { type: 'fitb', context: 'IRR', question: 'The IRR is the discount rate at which the Net Present Value of an investment equals ___.', answer: ['zero', '0'], explanation: 'IRR is defined as the rate where NPV = 0. Invest when IRR exceeds your Discount Rate (WACC); the deal destroys value when IRR falls below it.' },
+    { type: 'fitb', context: 'WACC', question: 'In the WACC formula, the after-tax cost of debt = Interest Rate × (1 – ___ Rate).', answer: ['Tax', 'tax'], explanation: 'Interest on debt is tax-deductible, so companies pay less in effective cost after the government subsidizes a portion. After-tax cost = rate × (1 – tax rate).' },
+    { type: 'fitb', context: 'NPV Decision Rule', question: 'If an investment\'s Asking Price is below its Present Value, the NPV is ___ and you should invest.', answer: ['positive', 'greater than zero'], explanation: 'NPV = PV of cash flows – Asking Price. If PV > Asking Price, NPV > 0, meaning the investment clears your required return hurdle.' },
+    { type: 'fitb', context: 'Present Value', question: 'PV = FV / (1 + r)^___, where n represents the number of periods.', answer: 'n', explanation: 'The exponent n counts how many compounding periods you are discounting across. The further out the cash flow, the more it is discounted.' },
+    { type: 'fitb', context: 'Perpetuity Growth Formula', question: 'In the growing perpetuity formula, Value = CF / (r – g), the cash flow growth rate g must be ___ than the discount rate r.', answer: ['less', 'lower', 'smaller'], explanation: 'If g >= r, the denominator hits zero or goes negative, producing an infinite or nonsensical value. Growth must be sub-WACC for the formula to hold.' },
 ];
 
 // ============================================================
@@ -122,7 +132,17 @@ const core_level2 = [
         ],
         correct: 1,
         explanation: 'Key drivers focus your modeling effort where it matters. For a retailer, same-store sales growth matters far more than the exact cost of office supplies. Building a 300-line model with 2-line assumptions for each creates false precision — a 5-driver model that stress-tests those drivers is far more valuable.'
-    }
+    },
+
+    // TF — Level 2
+    { type: 'tf', context: 'Time Value of Money', question: 'Even if there were zero inflation, $100 today would still be worth more than $100 received one year from now.', answer: true, explanation: 'True. The primary driver of TVM is the ability to invest money today and earn a return. Inflation is secondary. Even in a zero-inflation world, investment opportunity creates a preference for money now.' },
+    { type: 'tf', context: 'Discount Rate', question: 'A higher Discount Rate makes a company\'s intrinsic value higher, all else equal.', answer: false, explanation: 'False. A higher Discount Rate increases the denominator in the valuation formula (Value = CF / r, or CF / (r - g)), which reduces the present value of future cash flows and therefore lowers intrinsic value.' },
+    { type: 'tf', context: 'Cost of Capital', question: 'For the same company, the Cost of Equity is always higher than the after-tax Cost of Debt.', answer: true, explanation: 'True. Equity holders are last in line in bankruptcy, so they bear more risk and demand higher returns. Debt\'s tax deductibility further reduces its effective cost below the Cost of Equity.' },
+    { type: 'tf', context: 'WACC', question: 'WACC is calculated by weighting Cost of Equity and Cost of Debt by their market value proportions in the capital structure.', answer: true, explanation: 'True. WACC uses the market-value weights of equity and debt (not book values). The formula: % Equity × Cost of Equity + % Debt × Cost of Debt × (1 – Tax Rate).' },
+    { type: 'tf', context: 'IRR vs Discount Rate', question: 'If a project\'s IRR equals exactly its WACC, the NPV of the project is positive.', answer: false, explanation: 'False. When IRR equals WACC exactly, NPV equals zero — the project earns precisely the required return, creating no excess value. NPV > 0 only when IRR exceeds WACC.' },
+    { type: 'tf', context: 'Valuation Formula', question: 'In the perpetuity growth formula, if the cash flow growth rate rises from 3% to 5% (with a 10% discount rate), company value increases.', answer: true, explanation: 'True. At 3%: Value = CF / 7%. At 5%: Value = CF / 5%. The denominator shrinks from 7% to 5%, so value increases significantly. Higher growth rates raise value by narrowing the spread.' },
+    { type: 'tf', context: 'NPV', question: 'Excel\'s NPV() function calculates true Net Present Value when you include the Year 0 investment as the first argument.', answer: false, explanation: 'False. Excel\'s NPV() function actually calculates Present Value, not NPV. To get true NPV, you must subtract the initial investment (Year 0 outflow) separately from the NPV() result.' },
+    { type: 'tf', context: 'IRR', question: 'The IRR of an investment is affected by the investor\'s required Discount Rate (WACC).', answer: false, explanation: 'False. The IRR is a property of the investment\'s cash flows themselves — you are solving for the discount rate, not inputting one. The WACC is used afterward to judge whether the IRR is attractive.' },
 ];
 
 // ============================================================
@@ -180,7 +200,18 @@ const core_level3 = [
         ],
         correct: 2,
         explanation: 'WACC = 70% × 12% + 30% × 6% × (1 – 25%) = 8.4% + 1.35% = 9.75%. Wait — actually: 70% × 12% = 8.4%, 30% × 6% × 0.75 = 1.35%, total = 9.75%. The tax shield on debt reduces its effective cost from 6% to 4.5%, making debt the cheaper funding source.'
-    }
+    },
+
+    // TF — Level 3
+    { type: 'tf', context: 'Apply: IRR vs WACC', question: 'A company\'s overall WACC is 11%, but a specific expansion project has a WACC of 8% and an estimated IRR of 10%. The company should proceed with the project.', answer: true, explanation: 'True. You compare IRR to the project-specific WACC, not the company\'s blended WACC. The project\'s IRR (10%) exceeds its own WACC (8%), so it creates value. Using the company\'s overall 11% WACC here would be incorrect.' },
+    { type: 'tf', context: 'Apply: Opportunity Cost', question: 'The correct Discount Rate to evaluate a real estate investment is always the current 10-year Treasury yield.', answer: false, explanation: 'False. The Discount Rate should reflect the opportunity cost for a comparable investment at the same risk level. Treasuries are risk-free; real estate carries credit, liquidity, and market risk. A risk-appropriate comparable return must be used.' },
+    { type: 'tf', context: 'Apply: PV', question: 'If your Discount Rate is 10% and you receive $500 in 3 years, the Present Value today is approximately $376.', answer: true, explanation: 'True. PV = $500 / (1.10)^3 = $500 / 1.331 ≈ $375.66 ≈ $376. Discounting $500 back 3 years at 10% yields roughly $376 today.' },
+
+    // FITB — Level 3
+    { type: 'fitb', context: 'Apply: Valuation', question: 'A company generates $100 FCF/year with no growth. At a 10% Discount Rate, its intrinsic value is $___.', answer: ['1000', '$1,000', '1,000'], explanation: 'Value = CF / r = $100 / 10% = $1,000. This is the no-growth perpetuity formula. Paying exactly $1,000 earns you a 10% annual yield on your investment.' },
+    { type: 'fitb', context: 'Apply: IRR', question: 'You invest $1,000 today and receive $2,000 in 5 years. The MoM (multiple on money) is ___.', answer: ['2x', '2.0x', '2'], explanation: 'MoM = Exit Value / Entry Value = $2,000 / $1,000 = 2.0x. The IRR on this investment is approximately 14.87% (the compounded annual return that doubles $1,000 in 5 years).' },
+    { type: 'fitb', context: 'Apply: WACC', question: 'If a company\'s Cost of Debt is 8% and the tax rate is 25%, the after-tax cost of debt is ___%.', answer: ['6', '6%', '6.0'], explanation: 'After-tax cost of debt = 8% × (1 – 25%) = 8% × 0.75 = 6%. The government effectively subsidizes 25% of the interest cost through the tax deduction.' },
+    { type: 'fitb', context: 'Apply: Valuation', question: 'FCF is $200/yr growing at 4%. Discount Rate is 10%. Company value = $200 / (___ – 4%).', answer: ['10%', '10', '0.10'], explanation: 'The denominator in the growing perpetuity formula is (Discount Rate – Growth Rate). Here: 10% – 4% = 6%, so Value = $200 / 6% = $3,333.' },
 ];
 
 // ============================================================
@@ -225,7 +256,18 @@ const core_level4 = [
         ],
         correct: 1,
         explanation: 'Leverage amplifies returns by reducing the upfront equity investment. With $100K down, you\'re earning similar cash flows (net of interest) on a much smaller base. The IRR on your $100K equity is much higher than on $500K — leverage amplifies both gains and losses. If the deal goes bad, losses are also amplified.'
-    }
+    },
+
+    // TF — Level 4
+    { type: 'tf', context: 'Analyze: PV Drivers', question: 'A company\'s Present Value increases if its expected future cash flows grow faster, its Discount Rate falls, OR its cash flow level increases.', answer: true, explanation: 'True. All three raise PV: more cash flows increase the numerator, a lower discount rate increases the PV of each dollar, and faster growth widens the stream of future cash flows.' },
+    { type: 'tf', context: 'Analyze: Leverage', question: 'Using debt (leverage) in a deal always increases the equity IRR, regardless of the deal\'s underlying returns.', answer: false, explanation: 'False. Leverage amplifies returns in both directions. If the deal\'s underlying returns are below the cost of debt, leverage destroys equity value and lowers the equity IRR. Leverage only helps when the deal return exceeds the debt cost.' },
+    { type: 'tf', context: 'Analyze: IRR Factors', question: 'Paying a lower Asking Price for an investment increases its IRR, all else equal.', answer: true, explanation: 'True. A lower purchase price means a higher return on the same future cash flows and exit price. IRR is directly sensitive to the initial investment: lower entry price → higher IRR.' },
+    { type: 'tf', context: 'Analyze: Valuation', question: 'Terminal Value typically represents less than 20% of a company\'s total DCF enterprise value in a standard 5-year projection.', answer: false, explanation: 'False. Terminal Value typically represents 60-80% of total DCF enterprise value, even in a 5-year model. This is why the terminal growth rate assumption is the most contested input in any DCF.' },
+
+    // FITB — Level 4
+    { type: 'fitb', context: 'Analyze: Valuation', question: 'In a typical 5-10 year DCF, Terminal Value accounts for roughly ___% of total Enterprise Value.', answer: ['60-80', '60–80', '60% to 80%'], explanation: 'Terminal Value dominates DCF valuations, often representing 60-80% of total value. This is why the terminal growth rate and terminal year WACC assumptions are so critical to get right.' },
+    { type: 'fitb', context: 'Analyze: MoM', question: 'A PE firm invests $200M in equity and exits for $450M. The Multiple on Money (MoM) is ___.', answer: ['2.25x', '2.25'], explanation: 'MoM = Exit Equity / Entry Equity = $450M / $200M = 2.25x. Over 5 years this equates to roughly a 17-18% IRR. Both MoM and IRR are used together because MoM ignores the time dimension.' },
+    { type: 'fitb', context: 'Analyze: Valuation Sensitivity', question: 'FCF = $100, Discount Rate = 12%, Growth = 3%. Company Value = $100 / (___%).', answer: ['9', '9%'], explanation: 'Denominator = 12% – 3% = 9%. Value = $100 / 9% ≈ $1,111. If the discount rate rose to 14%, the denominator jumps to 11% and value falls to ~$909 — a 18% decline from a 2% rate move.' },
 ];
 
 // ============================================================
@@ -270,7 +312,13 @@ const core_level5 = [
         ],
         correct: 1,
         explanation: 'Your Intrinsic Value ($3,000) < Market Value ($4,200) → the stock is expensive relative to your analysis. The market is betting on 5% perpetual growth; you think 3% is more realistic. If you\'re right, the stock should fall. Don\'t buy. A contrarian position (short) would be appropriate if you have conviction.'
-    }
+    },
+
+    // TF — Level 5
+    { type: 'tf', context: 'Evaluate: Model Use', question: 'A financial model should dictate an investment decision on its own, as long as the inputs are carefully researched.', answer: false, explanation: 'False. Models inform decisions but never dictate them. Like DNA evidence in a trial, a model is one input among many — qualitative factors, market conditions, and strategic considerations all matter. You never decide solely on the numbers.' },
+    { type: 'tf', context: 'Evaluate: IRR Comparison', question: 'When comparing two investments, the one with the higher IRR is always the better investment.', answer: false, explanation: 'False. The better investment is the one with the higher IRR relative to its own WACC (i.e., the larger IRR–WACC spread). An investment with 28% IRR against a 25% WACC creates less value than one with 22% IRR against an 18% WACC.' },
+    { type: 'tf', context: 'Evaluate: Valuation Complexity', question: 'Valuation is straightforward once you know a company\'s cash flows, growth rate, and discount rate.', answer: false, explanation: 'False. There are many types of "cash flow," the discount rate is difficult to estimate and may vary by cash flow type, growth rate estimation requires extensive modeling, and "company value" depends on which investors and parts of the company you\'re including.' },
+    { type: 'tf', context: 'Evaluate: Intrinsic vs Market', question: 'If your DCF intrinsic value exceeds the current market price, the investment is potentially undervalued and worth buying (assuming your analysis is correct).', answer: true, explanation: 'True. Intrinsic Value > Market Value implies the asking price is below what your analysis says it\'s worth — NPV > 0 on the purchase. This is the classic value investing signal, subject always to the quality of your assumptions.' },
 ];
 
 // ============================================================

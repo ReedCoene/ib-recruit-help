@@ -70,7 +70,35 @@ const lbo_level2 = [
         options: ['15%', '20%', '25%', '30%'],
         correct: 1,
         explanation: 'MoM = $500M / $200M = 2.5x in 5 years. Using quick math: 2x in 5 years ≈ 15%, 3x in 5 years ≈ 25%. 2.5x is between 2x and 3x → approximately 20% IRR. Exact: (2.5)^(1/5) – 1 = (2.5)^0.2 – 1 ≈ 20.1%. This is right at the typical PE hurdle rate — a borderline deal.'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'LBO Structure',
+        question: 'In a leveraged buyout, the PE firm itself is legally responsible for repaying the acquisition debt if the target company defaults.',
+        answer: false,
+        explanation: 'False. This is a critical structural feature of LBOs. The PE firm forms a "holding company" (HoldCo) that acquires the target. The acquisition debt is placed at the HoldCo level and is repaid using the target company\'s cash flows. The PE firm is NOT on the hook for the debt — only the company is. This structure is a key reason why PE firms can use so much leverage without direct personal or fund-level liability.'
+    },
+    {
+        type: 'tf',
+        context: 'Leverage Effect',
+        question: 'Leverage amplifies both the upside AND the downside of an LBO — it does not simply "boost" returns in all scenarios.',
+        answer: true,
+        explanation: 'True. Leverage amplifies returns in both directions. If the company performs well (TEV increases), a smaller equity investment magnifies returns dramatically. But if the company underperforms (TEV falls), the equity cushion erodes much faster than the TEV decline. BIWS explicitly notes: "Leverage AMPLIFIES returns — it does not boost them." A mediocre deal can become disastrous with high leverage.'
+    },
+    {
+        type: 'tf',
+        context: 'LBO vs. M&A',
+        question: 'Unlike in M&A deals, PE firms in LBOs can use Stock (publicly traded shares) as one of the sources of funding.',
+        answer: false,
+        explanation: 'False. PE firms use ONLY Cash ("Investor Equity") and Debt to fund LBOs. Stock is not available as a source of LBO financing because: (1) most PE firms are not publicly traded and therefore have no stock to issue, and (2) even publicly traded PE firms plan to sell the company within a few years, making stock issuance impractical. This is a key difference between LBOs and normal M&A deals.'
+    },
+    {
+        type: 'tf',
+        context: 'Ideal LBO Candidate',
+        question: 'A pre-revenue biotech startup with high growth potential is considered a strong LBO candidate because of its future earnings upside.',
+        answer: false,
+        explanation: 'False. A pre-revenue biotech is the single worst LBO candidate. LBOs require the acquired company to generate stable cash flows immediately to service and repay debt. A pre-revenue company has no cash flow, making it impossible to cover interest payments. High growth potential is irrelevant if the company cannot pay its lenders. Stable, predictable, recurring cash flows are the paramount criterion.'
+    },
 ];
 
 const lbo_level3 = [
@@ -97,7 +125,28 @@ const lbo_level3 = [
         options: ['20%', '25%', '26%', '30%'],
         correct: 1,
         explanation: 'MoM = $750M / $300M = 2.5x in 4 years. Benchmarks: 2x in 4 yrs ≈ 19%, 3x in 4 yrs ≈ 32%. 2.5x is between these → approximately 25-26% IRR. Exact: (2.5)^(1/4) – 1 = (2.5)^0.25 – 1 ≈ 25.7%. This exceeds the 20% hurdle → a strong deal. The 4-year hold (vs. 5 years for the same MoM) adds ~5-6% to the IRR.'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'LBO Debt Repayment',
+        question: 'In a standard LBO model, 100% of the company\'s free cash flow is assumed to be used to repay debt principal each year.',
+        answer: false,
+        explanation: 'False. The "Cash Flow Available for Debt Repayment" is Free Cash Flow adjusted for the beginning cash balance and a required minimum cash balance. The company must maintain a minimum cash level for operations, so it cannot use 100% of FCF for debt repayment. The actual debt repaid = MIN(Cash Flow Available for Debt Repayment, Remaining Debt Balance). Only when cash significantly exceeds minimums would 100% of FCF go to debt paydown.'
+    },
+    {
+        type: 'tf',
+        context: 'LBO Sources & Uses',
+        question: 'In a cash-free, debt-free LBO of a private company, the Uses column in the Sources & Uses schedule is based on the Purchase Enterprise Value, not the Purchase Equity Value.',
+        answer: true,
+        explanation: 'True. In a cash-free, debt-free private LBO, the target\'s existing cash and debt both go to zero immediately after closing (replaced by the new LBO capital structure). Therefore, the Use of funds is the Purchase Enterprise Value — what you\'re paying for the operating business. This differs from non-cash-free, debt-free deals (more common with public companies) where the Uses are based on Purchase Equity Value.'
+    },
+    {
+        type: 'tf',
+        context: 'LBO Interest Expense',
+        question: 'In an LBO model, the interest expense in Year 1 should be calculated based on the beginning-of-year debt balance, and it decreases each year as the company repays debt principal.',
+        answer: true,
+        explanation: 'True. As the company sweeps cash flow to repay debt each year, the outstanding debt balance falls. Since interest expense = Debt Balance × Interest Rate, a lower debt balance means lower interest expense in subsequent years. This creates a positive feedback loop in LBO models: more debt repaid → lower interest → more free cash flow → even more debt repaid. Interest expense typically falls significantly from Year 1 to Year 5.'
+    },
 ];
 
 const lbo_level4 = [
@@ -121,7 +170,28 @@ const lbo_level4 = [
         options: ['$250M, 1.67x', '$150M, 1.0x', '$100M, 0.67x', '$350M, 2.3x'],
         correct: 0,
         explanation: 'Exit TEV = same multiple × same EBITDA = $500M. Exit Equity = TEV – Remaining Debt = $500M – $250M = $250M. MoM = $250M / $150M = 1.67x. This is ONLY from debt paydown of $100M ($350M → $250M) — no EBITDA growth, no multiple expansion. 5-year hold at 1.67x MoM ≈ 11% IRR — below the 20% hurdle. Shows why debt paydown alone is insufficient without EBITDA growth.'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'Return Drivers',
+        question: 'Multiple expansion is considered the most reliable and controllable source of LBO returns, which is why PE firms target it as a primary return driver.',
+        answer: false,
+        explanation: 'False. Multiple expansion is the LEAST reliable and LEAST controllable source of LBO returns. It depends on market conditions, comparable company valuations, and macroeconomic factors — all outside the PE firm\'s control. PE firms explicitly try to avoid deals where returns are "dependent on multiple expansion." The most reliable drivers are EBITDA growth (operational improvement) and debt paydown (direct conversion of cash flows into equity value).'
+    },
+    {
+        type: 'tf',
+        context: 'Ideal LBO Candidate',
+        question: 'A company\'s current capital structure (existing debt load) is a critical factor that determines whether it qualifies as an LBO candidate, since highly leveraged companies cannot be taken private.',
+        answer: false,
+        explanation: 'False. A company\'s current capital structure generally does NOT affect its viability as an LBO candidate because the existing capital structure is "wiped out" and replaced with the new LBO capital structure at closing. What matters is whether the company\'s cash flows can support the NEW debt load imposed by the LBO. The exception: existing debt with high prepayment penalties could increase the acquisition cost.'
+    },
+    {
+        type: 'tf',
+        context: 'LBO Candidate Screening',
+        question: 'High CapEx requirements are generally favorable for LBO candidates because they indicate a capital-intensive business with significant asset collateral for lenders.',
+        answer: false,
+        explanation: 'False. High CapEx is generally UNFAVORABLE for LBO candidates. Capital-intensive businesses consume large amounts of cash for reinvestment, leaving less free cash flow to repay debt. High FCF conversion (FCF/EBITDA) is key — low CapEx relative to EBITDA means more cash goes to debt service. While hard assets provide collateral, lenders care most about the cash flows available for interest and principal repayment.'
+    },
 ];
 
 const lbo_level5 = [
@@ -150,7 +220,28 @@ const lbo_level5 = [
         ],
         correct: 1,
         explanation: 'Best: C (Healthcare services) — stable demand (recession-resistant), decent margins, low CapEx → high FCF conversion → fast debt paydown. A is excellent (SaaS recurring revenue, high margins) but high growth often means high valuation → harder to find deals at reasonable entry multiples. B (Steel) fails the stability test — cyclicality creates default risk with leverage. D (biotech) is disqualified — no revenues to service debt. Order: C, A, B, D.'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'LBO Pricing Discipline',
+        question: 'In an LBO, a great business at any price is a good investment because operational improvements will always overcome an inflated entry multiple.',
+        answer: false,
+        explanation: 'False. Price is the single most important factor in LBO returns. An overpriced entry multiple creates immediate risk: if the market re-rates the multiple downward at exit (multiple contraction), the equity is severely impaired. BIWS states: "Almost any deal could work at the right price, and even the best company would be a terrible LBO candidate if the price is too high." PE firms are extremely price-disciplined.'
+    },
+    {
+        type: 'tf',
+        context: 'Exit Strategy',
+        question: 'A dividend recapitalization is generally considered a more attractive LBO exit strategy than a sale to a strategic acquirer.',
+        answer: false,
+        explanation: 'False. A sale to a strategic acquirer is the most desirable LBO exit because strategic buyers typically pay the highest prices (they can capture synergies) and the transaction fully exits the investment. A dividend recapitalization (adding more debt to pay a special dividend) is considered less ideal — it extracts some value but the PE firm still holds the investment, the company takes on more leverage, and it does not represent a true exit.'
+    },
+    {
+        type: 'tf',
+        context: 'LBO vs. M&A Differences',
+        question: 'Synergies are as critical in LBO models as they are in M&A merger models, since PE firms must justify premiums paid over market value.',
+        answer: false,
+        explanation: 'False. Synergies are far less important in LBO models than in M&A merger models. In an M&A deal, the acquirer combines two companies and synergies drive the accretion/dilution math. In a standard LBO, the PE firm acquires only one company (no combination) and creates value through EBITDA growth, debt paydown, and multiple expansion — not synergies. Synergies become relevant in LBOs only when add-on acquisitions are made to build a platform.'
+    },
 ];
 
 const lbo_level6 = [
@@ -221,6 +312,77 @@ const lbo_fillin = [
     }
 ];
 
+// ============================================================
+// FITB — Leveraged Buyouts & LBO Models
+// ============================================================
+
+const lbo_fitb = [
+    {
+        level: 1,
+        type: 'fitb',
+        context: 'LBO Returns',
+        question: 'In an LBO, the primary return metric used alongside IRR is ___, which measures total cash-on-cash return as a multiple.',
+        answer: ['MoM', 'MoIC', 'multiple on money', 'money-on-money multiple'],
+        explanation: 'MoM (Multiple on Money) or MoIC (Multiple on Invested Capital) = Exit Equity / Entry Equity. A 3x MoM means you tripled your money. PE firms track both IRR (time-sensitive) and MoM (absolute return) because the same IRR over different holding periods implies different MoM multiples.'
+    },
+    {
+        level: 1,
+        type: 'fitb',
+        context: 'LBO Capital Structure',
+        question: 'Sources of funds in an LBO = ___ + equity contribution.',
+        answer: 'Debt',
+        explanation: 'LBO financing has only two sources: Debt (term loans, subordinated notes, etc.) and Investor Equity (the PE firm\'s cash contribution). Unlike M&A deals, Stock is never a source of LBO funding. Total Sources = Total Uses = Purchase Enterprise Value + fees.'
+    },
+    {
+        level: 2,
+        type: 'fitb',
+        context: 'Entry/Exit Multiples',
+        question: 'If a PE firm exits an LBO at a higher EBITDA multiple than it paid at entry, this is called multiple ___.',
+        answer: ['expansion', 'multiple expansion'],
+        explanation: 'Multiple expansion occurs when TEV/EBITDA at exit > TEV/EBITDA at entry. It is a tailwind to returns but is largely outside the PE firm\'s control — it depends on market conditions, comparable valuations, and macro factors. PE firms model conservative exits at the same or lower multiple than entry.'
+    },
+    {
+        level: 2,
+        type: 'fitb',
+        context: 'Leverage Ratio',
+        question: 'LBO leverage is typically expressed as Total Debt divided by ___, and most LBO deals close in the 4-6x range.',
+        answer: 'EBITDA',
+        explanation: 'The Leverage Ratio = Total Debt / EBITDA. Lenders use this to assess debt capacity. Most LBOs close at 4-6x Debt/EBITDA — going above 6x is unusual and restricted by credit markets in most environments. This multiple is benchmarked against recent comparable deals in the same industry.'
+    },
+    {
+        level: 3,
+        type: 'fitb',
+        context: 'IRR Quick Math',
+        question: 'A 2x MoM over 5 years corresponds to an IRR of approximately ___.',
+        answer: ['15%', '15'],
+        explanation: 'Key benchmark: 2x in 5 years ≈ 15% IRR. Other benchmarks to memorize: 2x in 3 years ≈ 26%, 2x in 4 years ≈ 19%, 3x in 3 years ≈ 44%, 3x in 5 years ≈ 25%. These are essential for interview mental math — interviewers will give you MoM and holding period and expect a rapid IRR estimate.'
+    },
+    {
+        level: 3,
+        type: 'fitb',
+        context: 'Three Return Drivers',
+        question: 'The three sources of LBO returns are EBITDA growth, debt paydown, and multiple ___.',
+        answer: ['expansion', 'multiple expansion'],
+        explanation: 'EBITDA growth increases the total enterprise value at exit. Debt paydown converts operating cash flows directly into equity value (equity = TEV - Debt, so less debt = more equity). Multiple expansion provides a tailwind if exit valuation multiples are higher than entry. Of these three, only EBITDA growth and debt paydown are within the PE firm\'s control.'
+    },
+    {
+        level: 4,
+        type: 'fitb',
+        context: 'Exit Equity Formula',
+        question: 'Exit Equity Value in an LBO = Exit TEV minus remaining ___ at exit.',
+        answer: ['Debt', 'debt balance'],
+        explanation: 'Exit Equity = Exit TEV – Remaining Debt Balance. Exit TEV = Exit EBITDA × Exit Multiple. The remaining debt balance falls each year as the company repays principal via the cash sweep. More debt repaid → lower remaining balance → higher exit equity for the same exit TEV. This is the fundamental LBO returns equation.'
+    },
+    {
+        level: 4,
+        type: 'fitb',
+        context: 'FCF Conversion',
+        question: 'A company with low CapEx relative to EBITDA is preferred in LBOs because it has high free cash flow ___, meaning more cash is available for debt repayment.',
+        answer: ['conversion', 'FCF conversion'],
+        explanation: 'FCF Conversion = FCF / EBITDA. Low CapEx means less cash is consumed by reinvestment, leaving more to repay LBO debt. High FCF conversion (>60-70%) is a key LBO candidate characteristic. Capital-intensive businesses (manufacturing, mining) have low FCF conversion and are therefore poor LBO candidates unless purchased at very low entry multiples.'
+    },
+];
+
 const QUESTIONS_LBO = {
     1: lbo_level1,
     2: lbo_level2,
@@ -229,5 +391,6 @@ const QUESTIONS_LBO = {
     5: lbo_level5,
     6: lbo_level6,
     order: lbo_order,
-    fillin: lbo_fillin
+    fillin: lbo_fillin,
+    fitb: lbo_fitb
 };

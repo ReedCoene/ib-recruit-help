@@ -75,7 +75,42 @@ const ma_level2 = [
         ],
         correct: 1,
         explanation: 'Uses = every dollar spent in the transaction: the equity check to sellers (Purchase Equity Value), M&A advisory/legal/financing fees, and any existing target debt that is repaid at closing (sometimes). This total must equal Sources (new debt + cash + stock issued). The "balance sheet" of the deal must always balance.'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'Deal Financing',
+        question: 'In a merger model, using cash to fund an acquisition has zero cost because cash earns no return sitting on the balance sheet.',
+        answer: false,
+        explanation: 'False. Cash used in an acquisition has a "foregone interest" cost — the interest income the acquirer gives up by spending that cash. This is a true economic cost (not just an opportunity cost) that reduces Pre-Tax Income, Net Income, and EPS. Every CFO accounts for foregone interest on cash used in deals.'
+    },
+    {
+        type: 'tf',
+        context: 'Stock Deals',
+        question: 'In a 100% stock deal, if the acquirer\'s P/E is greater than the target\'s P/E at the purchase price, the deal will be accretive to the acquirer\'s EPS.',
+        answer: true,
+        explanation: 'True. In a 100% stock deal, the acquirer\'s weighted cost of acquisition equals the reciprocal of its P/E (i.e., 1 / Acquirer P/E). The seller\'s yield equals 1 / Seller\'s P/E at purchase price. When Acquirer P/E > Seller P/E at purchase, the cost (1/Acquirer P/E) < the yield (1/Seller P/E) → accretive.'
+    },
+    {
+        type: 'tf',
+        context: 'M&A Concepts',
+        question: 'Revenue synergies are generally considered more reliable than cost synergies in M&A deals.',
+        answer: false,
+        explanation: 'False. Cost synergies (eliminating duplicate headcount, facilities, overlapping systems) are far more reliable because they are directly within management\'s control. Revenue synergies (cross-selling, pricing power, new markets) depend on customer behavior, competitive dynamics, and execution — all harder to guarantee. Bankers often present optimistic revenue synergy estimates, but sophisticated buyers discount them heavily.'
+    },
+    {
+        type: 'tf',
+        context: 'Goodwill',
+        question: 'Under US GAAP, Goodwill created in an acquisition must be amortized over a period not exceeding 40 years.',
+        answer: false,
+        explanation: 'False. Under US GAAP (ASC 350), Goodwill is NOT amortized. Instead, it is tested for impairment at least annually. If the carrying value of a reporting unit exceeds its fair value, a Goodwill impairment charge is recorded. (Note: under IFRS for private companies and US GAAP for private companies under ASU 2014-02, amortization over 10 years is permitted, but for public companies under US GAAP, Goodwill is not amortized.)'
+    },
+    {
+        type: 'tf',
+        context: 'Deal Process',
+        question: 'A Confidential Information Memorandum (CIM) is typically a 5-10 page document sent to buyers during the early stages of an M&A sale process.',
+        answer: false,
+        explanation: 'False. The CIM (also called an Information Memorandum or Offering Memorandum) is typically 50-100 pages and provides an in-depth description of the company, its financials, and strategic rationale. The shorter 5-10 page document sent in the early stages is the "Teaser," which summarizes the company without revealing its identity to protect confidentiality before NDAs are signed.'
+    },
 ];
 
 const ma_level3 = [
@@ -104,7 +139,28 @@ const ma_level3 = [
         ],
         correct: 0,
         explanation: 'Uses = Purchase Equity Value + Fees = $1,000M + $20M = $1,020M. Sources: New Debt = 60% × $1,000M = $600M. Cash = 40% × $1,000M = $400M, PLUS $20M for fees → but wait, fees are part of Uses. The $20M fees are typically funded proportionally or from cash. Total Sources = $600M + $420M cash = $1,020M. Sources always = Uses.'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'Merger Model Mechanics',
+        question: 'In a merger model, the combined company\'s pro-forma financials are based on the projected figures for the year AFTER the deal closes, not the most recent historical year.',
+        answer: true,
+        explanation: 'True. A merger model is always based on projected figures — you need forward-looking Revenue, Operating Income, Pre-Tax Income, and Net Income for each company. Using historical figures would fail to capture the expected financial performance of both companies as they operate going forward, and would not reflect the deal\'s impact on future earnings.'
+    },
+    {
+        type: 'tf',
+        context: 'Weighted Cost of Acquisition',
+        question: 'A deal is accretive whenever the Seller\'s earnings yield (NI / Purchase Equity Value) exceeds the acquirer\'s Weighted Cost of Acquisition.',
+        answer: true,
+        explanation: 'True. The Weighted Cost of Acquisition blends the after-tax costs of cash, debt, and stock used to fund the deal. If the Seller\'s yield (what you get per dollar spent) exceeds that blended cost (what you give up per dollar spent), you\'re gaining more earnings than you\'re paying → accretive. This generalizes the simpler all-cash and all-stock accretion rules.'
+    },
+    {
+        type: 'tf',
+        context: 'Deal Financing',
+        question: 'Stock is generally the cheapest form of acquisition financing because the acquirer does not pay any interest on shares issued.',
+        answer: false,
+        explanation: 'False. Stock is typically the most expensive financing method in M&A. The cost of equity in this context equals Net Income / Equity Value (the reciprocal of the P/E multiple), which is often 5-10% or more — higher than after-tax debt costs of 3-5%. Cash is cheapest (near-zero foregone interest rate), then debt (tax-deductible interest), then equity. Companies issue stock when they have high P/E multiples or insufficient debt capacity.'
+    },
 ];
 
 const ma_level4 = [
@@ -133,7 +189,28 @@ const ma_level4 = [
         ],
         correct: 0,
         explanation: 'Annual amortization = $100M / 5 years = $20M. Since it\'s NOT tax-deductible, there is no tax shield. The full $20M hits the IS as an expense. NI falls by $20M × (1–0) = $20M. Compare to tax-deductible amortization: $20M × (1–25%) = $15M NI impact. The non-deductibility is why goodwill impairment and purchase accounting charges are so painful — no tax offset.'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'Contribution Analysis',
+        question: 'If Company A contributes 60% of combined EBITDA but receives only 45% ownership in a merger, the contribution analysis suggests the deal may be unfavorable to Company A\'s shareholders.',
+        answer: true,
+        explanation: 'True. A contribution analysis compares what percentage of key metrics (Revenue, EBITDA, Net Income, Equity Value) each company contributes versus what percentage of combined ownership each receives. If A contributes 60% of EBITDA but gets only 45% ownership, it is "giving away" value relative to its earnings power. This would typically be a negotiating point for A\'s board and bankers.'
+    },
+    {
+        type: 'tf',
+        context: 'Deal Motivations',
+        question: 'Acquiring a competitor primarily to prevent it from disrupting your business is classified as a "financial" rather than a "fuzzy" reason for an acquisition.',
+        answer: false,
+        explanation: 'False. A defensive acquisition (buying a competitor to prevent disruption) is a "fuzzy" reason for an acquisition. Financial reasons are those you can quantify — consolidation economies of scale, geographic expansion for measurable revenue growth, gaining market share. Defensive acquisitions and acqui-hires are "fuzzy" because the financial impact (preventing a future threat) is speculative and hard to model precisely.'
+    },
+    {
+        type: 'tf',
+        context: 'M&A Process',
+        question: 'In a sell-side M&A process, the investment banker\'s primary role is to negotiate the Definitive Agreement directly with buyers on behalf of the seller.',
+        answer: false,
+        explanation: 'False. The Definitive Agreement is negotiated by the Buyer and Seller (supported by bankers and lawyers), not by bankers acting alone. The banker\'s primary sell-side roles are: creating marketing materials (Teaser, CIM), contacting and screening potential buyers, running the bid process, providing valuation support, and issuing a Fairness Opinion. Lawyers negotiate the actual legal terms of the Definitive Agreement.'
+    },
 ];
 
 const ma_level5 = [
@@ -149,7 +226,28 @@ const ma_level5 = [
         ],
         correct: 1,
         explanation: 'Synergy estimates from bankers are systematically optimistic. Academic research shows ~70-80% of acquisitions destroy shareholder value. The $500M synergy figure is a best case. The board should ask: at what synergy realization level does the deal break even? At $350M PV? What\'s the probability of achieving that? Cost synergies (headcount, facility cuts) are far more reliable than revenue synergies (cross-selling, pricing).'
-    }
+    },
+    {
+        type: 'tf',
+        context: 'Deal Economics',
+        question: 'In theory, a company should pursue an acquisition if the target\'s asking price is less than the present value of the target\'s future free cash flows as perceived by the acquirer.',
+        answer: true,
+        explanation: 'True. This is the fundamental M&A value-creation test: if the asking price < implied intrinsic value (PV of future cash flows), the acquirer is buying something for less than it\'s worth. Equivalently, the expected IRR from the acquisition exceeds the acquirer\'s discount rate (WACC). In practice, companies also model EPS accretion/dilution as a real-world check on shareholder reaction.'
+    },
+    {
+        type: 'tf',
+        context: 'Merger vs. Acquisition',
+        question: 'A "merger" and an "acquisition" have distinct mechanical differences in how the transaction is modeled in a merger model.',
+        answer: false,
+        explanation: 'False. There is no mechanical difference between modeling a merger and an acquisition. The only distinction is size: in a merger, the companies are closer in size and stock financing is more common; in an acquisition, the buyer is typically much larger. The financial modeling — combining income statements, calculating EPS accretion/dilution, building Sources & Uses — works identically regardless of whether the deal is called a merger or acquisition.'
+    },
+    {
+        type: 'tf',
+        context: 'Takeover Premium',
+        question: 'An acquirer must pay a takeover premium when buying a public target because acquiring 100% of shares changes the supply/demand dynamic and existing shareholders demand compensation for giving up full ownership.',
+        answer: true,
+        explanation: 'True. Buying shares in the open market is very different from acquiring 100% of a public company. When you seek to buy 100% of shares, you dramatically shift demand, which drives up the price. Existing shareholders know they are giving up future upside and the right to their stake — they demand a premium. Typical premiums range from 20-40% above the undisturbed share price for public companies.'
+    },
 ];
 
 const ma_level6 = [
@@ -226,6 +324,77 @@ const ma_fillin = [
     }
 ];
 
+// ============================================================
+// FITB — M&A Deals & Merger Models
+// ============================================================
+
+const ma_fitb = [
+    {
+        level: 1,
+        type: 'fitb',
+        context: 'EPS Accretion Rule',
+        question: 'In an all-stock deal, a deal is EPS accretive if the acquirer\'s P/E is ___ than the target\'s P/E at the purchase price.',
+        answer: 'higher',
+        explanation: 'When the acquirer\'s P/E is higher, the cost of each share issued (1/Acquirer P/E) is lower than the earnings yield received from the target (1/Target P/E). You are issuing expensive shares to buy cheap earnings — boosting EPS.'
+    },
+    {
+        level: 1,
+        type: 'fitb',
+        context: 'Sources & Uses',
+        question: 'In a Sources & Uses table, total Sources must always equal total ___.',
+        answer: 'Uses',
+        explanation: 'The Sources & Uses table is the "balance sheet" of a deal. Sources (new debt, cash on hand, stock issued) fund the Uses (purchase equity value, fees, debt repaid). If they don\'t balance, the model has an error.'
+    },
+    {
+        level: 2,
+        type: 'fitb',
+        context: 'Goodwill Formula',
+        question: 'Goodwill created in an acquisition = Purchase Price minus the fair value of net ___ assets.',
+        answer: ['identifiable', 'net identifiable'],
+        explanation: 'Goodwill is the residual after allocating the purchase price to all identifiable assets (PP&E write-ups, customer contracts, patents, brand names) at fair value. The unidentifiable remainder — brand, team quality, relationships — becomes Goodwill.'
+    },
+    {
+        level: 2,
+        type: 'fitb',
+        context: 'Cash Deal Accretion Test',
+        question: 'In an all-debt deal, accretion occurs when the target\'s Net Income exceeds the incremental after-tax ___ cost.',
+        answer: ['interest', 'interest expense'],
+        explanation: 'The deal adds target NI to the acquirer\'s combined earnings but subtracts new after-tax interest expense on acquisition debt. Net Income gained > after-tax interest cost = accretive. This is the fundamental accretion test for cash/debt-funded deals.'
+    },
+    {
+        level: 3,
+        type: 'fitb',
+        context: 'Weighted Cost of Acquisition',
+        question: 'A deal is accretive when the seller\'s earnings yield is ___ than the acquirer\'s Weighted Cost of Acquisition.',
+        answer: ['greater', 'higher'],
+        explanation: 'The Weighted Cost of Acquisition blends the after-tax costs of cash, debt, and stock. The seller\'s yield = NI / Purchase Equity Value. When yield > weighted cost, the acquirer is gaining more earnings per dollar than it is giving up — EPS rises.'
+    },
+    {
+        level: 3,
+        type: 'fitb',
+        context: 'PPA',
+        question: 'In Purchase Price Allocation, the excess purchase price not assigned to identifiable assets or PP&E write-ups flows to ___.',
+        answer: 'Goodwill',
+        explanation: 'PPA follows a waterfall: (1) allocate to PP&E at fair value write-up, (2) allocate to identifiable intangibles (patents, contracts, brands), (3) any remaining excess = Goodwill. Goodwill cannot be further subdivided into identifiable components.'
+    },
+    {
+        level: 4,
+        type: 'fitb',
+        context: 'Deal Financing Cost Ranking',
+        question: 'From cheapest to most expensive, the typical order of acquisition financing is: Cash, ___, then Stock.',
+        answer: 'Debt',
+        explanation: 'Cash is cheapest (foregone interest near risk-free rate, ~1-2%). Debt is next (after-tax cost of ~3-5%, tax-deductible interest). Stock is most expensive (cost = 1/P/E, often 5-10%+ depending on valuation). Companies use cash first, then debt, then stock as a last resort to avoid dilution.'
+    },
+    {
+        level: 4,
+        type: 'fitb',
+        context: 'Takeover Premium',
+        question: 'Typical takeover premiums for public company acquisitions range from ___ to 40% above the undisturbed share price.',
+        answer: ['20%', '20'],
+        explanation: 'Most public company acquisitions involve premiums of 20-40% above the undisturbed (pre-announcement) share price. The acquirer must pay this premium to convince shareholders to tender their shares. Premiums below 20% are rare and often indicate a "friendly" deal where the target board aggressively supports it.'
+    },
+];
+
 const QUESTIONS_MA = {
     1: ma_level1,
     2: ma_level2,
@@ -234,5 +403,6 @@ const QUESTIONS_MA = {
     5: ma_level5,
     6: ma_level6,
     order: ma_order,
-    fillin: ma_fillin
+    fillin: ma_fillin,
+    fitb: ma_fitb
 };

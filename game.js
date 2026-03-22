@@ -145,11 +145,17 @@ function showQuestion() {
     document.getElementById('order-area').style.display = 'none';
     document.getElementById('builder-area').style.display = 'none';
     document.getElementById('fillin-area').style.display = 'none';
+    document.getElementById('tf-area').style.display = 'none';
+    document.getElementById('fitb-area').style.display = 'none';
 
     if (q.type === 'flashcard') {
         showFlashcard(q);
     } else if (q.type === 'fillin') {
         showFillin(q);
+    } else if (q.type === 'tf') {
+        showTF(q);
+    } else if (q.type === 'fitb') {
+        showFitb(q);
     } else if (q.type === 'mc') {
         showMC(q);
     } else if (q.items) {
@@ -339,6 +345,111 @@ function checkOrder() {
     document.getElementById('order-explanation-text').textContent =
         (allCorrect ? '' : 'Correct order: ' + q.items.join(' → ') + '\n\n') + q.explanation;
 
+    updateGameHeader();
+    expBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ============================================================
+// TRUE / FALSE
+// ============================================================
+function showTF(q) {
+    document.getElementById('tf-area').style.display = 'block';
+    document.getElementById('tf-explanation').style.display = 'none';
+    document.getElementById('tf-context').textContent = q.context || '';
+    document.getElementById('tf-question').textContent = q.question;
+    const trueBtn = document.getElementById('tf-true-btn');
+    const falseBtn = document.getElementById('tf-false-btn');
+    trueBtn.disabled = false;
+    falseBtn.disabled = false;
+    trueBtn.className = 'tf-btn tf-true';
+    falseBtn.className = 'tf-btn tf-false';
+}
+
+function selectTF(selected) {
+    const q = state.questions[state.questionIndex];
+    const isCorrect = selected === q.answer;
+    const trueBtn = document.getElementById('tf-true-btn');
+    const falseBtn = document.getElementById('tf-false-btn');
+    trueBtn.disabled = true;
+    falseBtn.disabled = true;
+
+    // Mark correct answer green always
+    if (q.answer === true) trueBtn.classList.add('selected-correct');
+    else falseBtn.classList.add('selected-correct');
+
+    // Mark wrong selection red
+    if (!isCorrect) {
+        if (selected === true) trueBtn.classList.add('selected-wrong');
+        else falseBtn.classList.add('selected-wrong');
+    }
+
+    state.answered.push({ correct: isCorrect, question: q.question.substring(0, 60) + '...' });
+    if (isCorrect) {
+        state.correct++;
+        state.streak++;
+        if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+        state.score += 10 + Math.min(state.streak * 2, 20);
+    } else {
+        state.streak = 0;
+    }
+
+    const expBox = document.getElementById('tf-explanation');
+    expBox.style.display = 'block';
+    const header = document.getElementById('tf-explanation-header');
+    header.className = 'explanation-header ' + (isCorrect ? 'correct' : 'wrong');
+    header.textContent = isCorrect ? 'Correct!' : 'Not quite...';
+    document.getElementById('tf-explanation-text').textContent = q.explanation;
+    updateGameHeader();
+    expBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ============================================================
+// SHORT FILL-IN-THE-BLANK
+// ============================================================
+function showFitb(q) {
+    document.getElementById('fitb-area').style.display = 'block';
+    document.getElementById('fitb-explanation').style.display = 'none';
+    document.getElementById('fitb-context').textContent = q.context || '';
+    document.getElementById('fitb-question').textContent = q.question;
+    const input = document.getElementById('fitb-input');
+    input.value = '';
+    input.className = 'fitb-input';
+    input.disabled = false;
+    document.getElementById('fitb-submit').style.display = 'inline-block';
+    setTimeout(() => input.focus(), 100);
+}
+
+function checkFitb() {
+    const q = state.questions[state.questionIndex];
+    const input = document.getElementById('fitb-input');
+    const raw = input.value.trim().toLowerCase();
+    if (!raw) return;
+
+    const accepted = Array.isArray(q.answer)
+        ? q.answer.map(a => a.toLowerCase())
+        : [q.answer.toLowerCase()];
+    const isCorrect = accepted.some(a => raw === a || raw.replace(/[^a-z0-9]/g,'') === a.replace(/[^a-z0-9]/g,''));
+
+    input.classList.add(isCorrect ? 'correct' : 'wrong');
+    input.disabled = true;
+    document.getElementById('fitb-submit').style.display = 'none';
+
+    state.answered.push({ correct: isCorrect, question: q.question.substring(0, 60) + '...' });
+    if (isCorrect) {
+        state.correct++;
+        state.streak++;
+        if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+        state.score += 10 + Math.min(state.streak * 2, 20);
+    } else {
+        state.streak = 0;
+    }
+
+    const expBox = document.getElementById('fitb-explanation');
+    expBox.style.display = 'block';
+    const header = document.getElementById('fitb-explanation-header');
+    header.className = 'explanation-header ' + (isCorrect ? 'correct' : 'wrong');
+    header.textContent = isCorrect ? 'Correct!' : `Not quite — the answer is: ${Array.isArray(q.answer) ? q.answer[0] : q.answer}`;
+    document.getElementById('fitb-explanation-text').textContent = q.explanation;
     updateGameHeader();
     expBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }

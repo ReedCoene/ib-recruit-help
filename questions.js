@@ -46,6 +46,12 @@ const level1Questions = [
     { type: "flashcard", term: "Days Payable Outstanding (DPO)", definition: "Accounts Payable / COGS × 365. How many days the company takes to pay suppliers. Higher can indicate market power." },
     { type: "flashcard", term: "Accrued Expenses", definition: "A Liability for recurring expenses without invoices (utilities, wages). Similar to AP but for recurring items. Expense recognized on IS before cash payment." },
     { type: "flashcard", term: "Preferred Stock", definition: "A hybrid funding source between Debt and Equity. Has fixed dividends (like interest) but is NOT tax-deductible. Preferred Dividends reduce Net Income to Common but NOT Preferred Stock balance." },
+    // FITB — Level 1
+    { type: 'fitb', context: 'Income Statement', question: 'Revenue minus COGS equals ___', answer: ['Gross Profit', 'Gross Margin'], explanation: 'Gross Profit = Revenue - COGS. It shows how much additional profit the company earns from each sale before fixed operating expenses.' },
+    { type: 'fitb', context: 'Cash Flow Statement', question: 'The Cash Flow Statement begins with ___ at the top line.', answer: ['Net Income'], explanation: 'Under U.S. GAAP (indirect method), the CFS starts with Net Income and adjusts downward for non-cash items, working capital changes, and then shows investing and financing activities.' },
+    { type: 'fitb', context: 'Balance Sheet', question: 'Assets = Liabilities + ___', answer: ['Equity', "Shareholders' Equity", 'Common Shareholders Equity'], explanation: 'This is the fundamental accounting equation. The Balance Sheet must always balance — every dollar of assets is funded by either a liability (debt, payables) or equity (shareholder contributions and retained earnings).' },
+    { type: 'fitb', context: 'Working Capital', question: 'Free Cash Flow = Cash Flow from Operations minus ___', answer: ['CapEx', 'Capital Expenditures'], explanation: 'FCF = CFO - CapEx. It represents the discretionary cash the company generates after paying for the capital investment needed to maintain and grow the business.' },
+    { type: 'fitb', context: 'Metrics', question: 'EBITDA stands for Earnings Before Interest, Taxes, Depreciation, and ___', answer: ['Amortization'], explanation: 'The A in EBITDA stands for Amortization — the non-cash allocation of intangible asset costs over time, analogous to depreciation for physical assets.' },
 ];
 
 // ============================================================
@@ -365,6 +371,13 @@ const level2Questions = [
         correct: 1,
         explanation: "Other Intangible Assets amortize (e.g., a patent over 10 years). This Amortization is a non-cash IS expense, added back on the CFS. Goodwill does NOT amortize — it remains on the BS at its original value unless an impairment test shows the acquired company underperformed, triggering a Goodwill write-down (also non-cash, typically not tax-deductible)."
     },
+    // TF — Level 2
+    { type: 'tf', context: 'Income Statement Criteria', question: 'CapEx appears on the Income Statement because the company spends real cash to purchase the asset.', answer: false, explanation: 'CapEx does NOT appear on the IS. To appear on the IS, an item must correspond 100% to the current period. CapEx benefits multiple years, so only Depreciation (the annual allocation) hits the IS. The initial purchase goes on the CFS (CFI) and BS (PP&E).' },
+    { type: 'tf', context: 'Balance Sheet', question: 'Deferred Revenue is classified as a Liability because the company has already collected cash but has not yet delivered the product or service.', answer: true, explanation: 'Deferred Revenue represents a future obligation — the company must still deliver the product/service. Since it results in a future outflow of effort/resources (not a future benefit), it is a Liability, not an Asset.' },
+    { type: 'tf', context: 'Non-cash Items', question: 'Stock-Based Compensation is identical to Depreciation in its effect on the financial statements because both are non-cash expenses added back on the Cash Flow Statement.', answer: false, explanation: 'Both are non-cash IS expenses added back on the CFS, but SBC creates additional shares outstanding, diluting existing investors. Depreciation simply reduces PP&E — it does not change the share count or capital structure. SBC is often treated as a real economic cost in valuation.' },
+    // FITB — Level 2
+    { type: 'fitb', context: 'Linking the Statements', question: 'Net Income from the Income Statement flows into ___ on the Balance Sheet.', answer: ['Retained Earnings'], explanation: 'Each period, Net Income is added to Retained Earnings (a component of Common Shareholders Equity). Dividends are subtracted. This is one of the key links between the IS and BS.' },
+    { type: 'fitb', context: 'IFRS vs. GAAP', question: 'Under IFRS, Operating Leases on the Income Statement are treated like ___ Leases — split into Interest and Depreciation.', answer: ['Finance', 'Finance Leases', 'Capital'], explanation: 'Under IFRS 16, all leases (Operating and Finance) are treated the same way on the IS: the lease expense is split into an Interest component and a Depreciation component, front-loading the total expense. Under U.S. GAAP, Operating Leases show a single flat Rental Expense.' },
 ];
 // ============================================================
 // LEVEL 3: APPLY — Walk through statement changes
@@ -657,6 +670,13 @@ const level3Questions = [
         correct: 2,
         explanation: "IS: PTI -$100, Book Taxes -$25, NI -$75. CFS: NI -$75, add back write-down +$100, Deferred Taxes -$25 (not cash-tax deductible — no real tax savings, so DT offsets the book tax benefit). Cash unchanged. BS: PP&E -$100, DTA +$25 = Assets -$75. CSE -$75. Both sides down $75. Cash is unchanged because the write-down is non-cash and not tax-deductible."
     },
+    // TF — Level 3
+    { type: 'tf', context: 'Walk the Statements', question: 'When Deferred Revenue increases by $50 and no product has been delivered, Revenue increases by $50 on the Income Statement.', answer: false, explanation: 'No delivery = no Revenue. Under accrual accounting, Revenue is only recognized when the product or service is delivered. Collecting cash upfront creates Deferred Revenue (a Liability) on the BS and a positive Cash Flow adjustment on the CFS — not Revenue on the IS.' },
+    { type: 'tf', context: 'Walk the Statements', question: 'When a company issues $200 of Debt and uses the proceeds to purchase $200 of PP&E, Cash on the Balance Sheet is unchanged.', answer: true, explanation: 'The Debt issuance brings in $200 of Cash (positive CFF), and the CapEx purchase spends $200 of Cash (negative CFI). The two flows exactly offset, leaving Net Cash unchanged. BS: PP&E +$200 on Assets, Debt +$200 on L&E. Both sides up $200.' },
+    { type: 'tf', context: 'Walk the Statements', question: 'A Loss on the sale of an asset is considered a non-cash expense on the Cash Flow Statement because no additional cash is spent in the current period beyond the proceeds received.', answer: true, explanation: 'The Loss represents the gap between book value and sale price — it was "spent" in a prior period when the asset was purchased. The actual cash impact is the sale proceeds (shown in CFI). On the CFS, the Loss is added back to remove it from CFO, and the full proceeds are shown in CFI.' },
+    // FITB — Level 3
+    { type: 'fitb', context: 'Walk the Statements', question: 'Depreciation increases by $100 at a 25% tax rate. Cash on the Balance Sheet increases by $___', answer: ['25', '$25'], explanation: 'IS: PTI -$100, Taxes -$25, NI -$75. CFS: NI -$75, add back D&A +$100 = Cash +$25. The only real cash impact of Depreciation is the tax savings: $100 × 25% = $25.' },
+    { type: 'fitb', context: 'Walk the Statements', question: 'A $100 PP&E write-down that is NOT tax-deductible leaves Cash ___ (unchanged / higher / lower).', answer: ['unchanged'], explanation: 'IS: PTI -$100, Book Taxes -$25, NI -$75. CFS: NI -$75, add back write-down +$100, Deferred Taxes -$25 (no real tax savings). Net Cash = $0. Because the write-down is non-cash and not tax-deductible, Cash is completely unaffected.' },
 ];
 // ============================================================
 // LEVEL 4: ANALYZE — Calculate ratios, interpret numbers
@@ -871,6 +891,12 @@ const level4Questions = [
         correct: 1,
         explanation: "Change in WC shows the net cash impact of operational timing gaps. Negative means the company tied up more cash in operations (e.g., built Inventory faster than AP grew). Positive means the company freed up cash (e.g., collected AR faster or increased Deferred Revenue). It's a key driver of the gap between Net Income and Cash Flow from Operations."
     },
+    // TF — Level 4
+    { type: 'tf', context: 'Credit Metrics', question: 'A higher Interest Coverage Ratio (EBITDA / Interest Expense) means the company is better able to service its Debt.', answer: true, explanation: 'Interest Coverage = EBITDA / Interest Expense. Higher means EBITDA can decline further before the company cannot cover its interest. A ratio of 5.0x means EBITDA could fall 80% before interest goes uncovered. Lenders typically require at least 2-3x.' },
+    { type: 'tf', context: 'Working Capital', question: 'Negative Working Capital is always a sign of financial distress because it means current liabilities exceed current operational assets.', answer: false, explanation: 'Negative WC can be a sign of strength. Companies like Amazon and Walmart collect cash from customers immediately (low DSO) and pay suppliers slowly (high DPO), resulting in negative WC. Suppliers effectively finance the business for free. It only signals distress if the company cannot meet its obligations.' },
+    // FITB — Level 4
+    { type: 'fitb', context: 'Metrics', question: 'Leverage Ratio = Total Debt / ___', answer: ['EBITDA'], explanation: 'Leverage Ratio = Total Debt / EBITDA. It measures how many years of EBITDA it would take to repay all Debt. Above 4-5x is generally considered highly leveraged. Lenders often set covenant limits around this ratio.' },
+    { type: 'fitb', context: 'Metrics', question: 'Cash Conversion Cycle = DIO + DSO minus ___', answer: ['DPO', 'Days Payable Outstanding'], explanation: 'CCC = DIO + DSO - DPO. A lower CCC is better — it means the company converts Inventory and Receivables into cash faster. A high DPO (slow supplier payments) reduces the CCC, which is why market-powerful companies like Walmart have very low CCCs.' },
 ];
 
 // ============================================================
@@ -1060,6 +1086,10 @@ const level5Questions = [
         correct: 0,
         explanation: "CCC = DIO + DSO - DPO. Lower CCC means the company converts operations to cash faster. Company A (5 days) has a 25-day advantage over Company B (30 days). This means Company A either: collects from customers faster (lower DSO), sells Inventory faster (lower DIO), or pays suppliers slower (higher DPO). In the same industry, this indicates superior working capital management."
     },
+    // TF — Level 5
+    { type: 'tf', context: 'FCF Quality', question: 'A company with consistently growing Free Cash Flow is always a strong investment, regardless of what is driving that FCF growth.', answer: false, explanation: 'FCF quality matters as much as FCF level. If growth is driven by CapEx cuts (underinvesting), aggressive working capital extension (stretching suppliers), or large SBC add-backs (which dilute shareholders), the FCF may be misleading. Sustainable FCF growth comes from revenue growth and margin improvement.' },
+    { type: 'tf', context: 'EBITDA Limitations', question: 'A company with positive and growing EBITDA can still go bankrupt.', answer: true, explanation: 'EBITDA excludes Interest Expense, CapEx, working capital needs, and Debt principal repayments. A highly leveraged company could have growing EBITDA but insufficient cash after interest payments and required reinvestment to service its Debt, leading to default. EBITDA is a proxy for cash flow, not actual cash flow.' },
+    { type: 'tf', context: 'Goodwill', question: 'A Goodwill impairment charge signals that the acquired company has performed better than expected since the acquisition closed.', answer: false, explanation: 'A Goodwill impairment means the acquired company is worth less than initially expected — the premium paid in the acquisition is no longer justified by actual performance. It is a lagging indicator of a deal that overpaid or a business that has underperformed post-acquisition.' },
 ];
 // ============================================================
 // LEVEL 6: CREATE — Multi-step interview problems

@@ -367,6 +367,40 @@
                     </div>
                 </div>
 
+                <!-- True / False Mode -->
+                <div id="tf-area" class="question-area" style="display:none;">
+                    <div class="question-card">
+                        <div class="question-context" id="tf-context"></div>
+                        <h2 class="question-text" id="tf-question"></h2>
+                    </div>
+                    <div class="tf-buttons">
+                        <button class="tf-btn tf-true" id="tf-true-btn" onclick="selectTF(true)">True</button>
+                        <button class="tf-btn tf-false" id="tf-false-btn" onclick="selectTF(false)">False</button>
+                    </div>
+                    <div class="explanation-box" id="tf-explanation" style="display:none;">
+                        <div class="explanation-header" id="tf-explanation-header"></div>
+                        <p id="tf-explanation-text"></p>
+                        <button class="next-btn" onclick="nextQuestion()">Next Question &#8594;</button>
+                    </div>
+                </div>
+
+                <!-- Short Fill-in-the-Blank -->
+                <div id="fitb-area" class="question-area" style="display:none;">
+                    <div class="question-card">
+                        <div class="question-context" id="fitb-context"></div>
+                        <h2 class="question-text" id="fitb-question"></h2>
+                    </div>
+                    <div class="fitb-input-row">
+                        <input type="text" id="fitb-input" class="fitb-input" placeholder="Type your answer..." autocomplete="off" onkeydown="if(event.key==='Enter') checkFitb()">
+                        <button class="submit-btn fitb-submit-btn" id="fitb-submit" onclick="checkFitb()">Check</button>
+                    </div>
+                    <div class="explanation-box" id="fitb-explanation" style="display:none;">
+                        <div class="explanation-header" id="fitb-explanation-header"></div>
+                        <p id="fitb-explanation-text"></p>
+                        <button class="next-btn" onclick="nextQuestion()">Next Question &#8594;</button>
+                    </div>
+                </div>
+
                 <!-- Fill-in-the-Blank: Walk the Statements -->
                 <div id="fillin-area" class="question-area" style="display:none;">
                     <div class="question-card">
